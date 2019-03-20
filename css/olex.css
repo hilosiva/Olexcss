@@ -1,0 +1,313 @@
+@charset 'UTF-8';
+/*! olex v1.0.0| MIT License | */
+/*
+# 俺のフレキシブルレイアウト
+Oreno Flexible Layout
+
+※ Opera 12 は `font-size: 0` が効かないので、別途対応が必要
+
+## 基本
+
+```html
+<div class="olex">
+  <div class="olex__item">A</div>
+  <div class="olex__item">B</div>
+  <div class="olex__item">C</div>
+</div>
+```
+*/
+.olex {
+  display: table;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  font-size: 0;
+}
+
+.olex__item {
+  display: inline-block;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  vertical-align: top;
+  text-align: left;
+  font-size: medium;
+}
+
+/*
+## 水平方向の位置揃え
+
+```html
+<div class="olex -center">
+  <div class="olex__item">A</div>
+  <div class="olex__item">B</div>
+  <div class="olex__item">C</div>
+</div>
+```
+*/
+.olex.-left {
+  text-align: left;
+}
+.olex.-center {
+  text-align: center;
+}
+.olex.-right {
+  text-align: right;
+}
+
+/*
+## 垂直方向の位置揃え
+
+```html
+<div class="olex -middle">
+  <div class="olex__item">A</div>
+  <div class="olex__item">B</div>
+  <div class="olex__item">C</div>
+</div>
+```
+*/
+.olex.-top > .olex__item {
+  vertical-align: top;
+}
+
+.olex.-middle > .olex__item {
+  vertical-align: middle;
+}
+
+.olex.-bottom > .olex__item {
+  vertical-align: bottom;
+}
+
+
+/*
+## 逆順
+
+```html
+<div class="olex -reverse">
+  <div class="olex__item">A</div>
+  <div class="olex__item">B</div>
+  <div class="olex__item">C</div>
+</div>
+```
+*/
+.olex.-reverse {
+  direction: rtl;
+}
+
+.olex.-reverse > .olex__item {
+  direction: ltr;
+}
+
+
+/*
+## 均等配置
+
+```html
+<div class="olex -justify">
+  <div class="olex__item">A</div>
+  <div class="olex__item">B</div>
+  <div class="olex__item">C</div>
+</div>
+```
+*/
+.olex.-justify {
+  display: block;
+  text-align: justify;
+  text-justify: distribute-all-lines;
+}
+.olex.-justify:after {
+  display: inline-block;
+  width: 100%;
+  content: '';
+}
+
+
+/*
+## アイテムの水平方向の位置揃え
+
+```html
+<div class="olex ">
+  <div class="olex__item">A</div>
+  <div class="olex__item">B</div>
+  <div class="olex__item">C</div>
+</div>
+```
+*/
+.olex__item.-left {
+  text-align: left;
+}
+.olex__item.-center {
+  text-align: center;
+}
+.olex__item.-right {
+  text-align: right;
+}
+
+
+
+/*
+## グリッドシステム
+
+```html
+<div class="olex -grid -gutter">
+  <div class="olex__item -sp-6 -tab-4">A</div>
+  <div class="olex__item -sp-6 -tab-4">B</div>
+  <div class="olex__item -tab-4 -pc-12>C</div>
+</div>
+```
+*/
+
+.olex.-grid > .olex__item {
+  width: 100%;
+}
+
+.olex.-gutter {
+  display: block;
+  margin: -4px;
+  width: auto;
+}
+
+.olex.-gutter > .olex__item {
+  border: 4px solid transparent;
+  background-clip: padding-box;
+}
+
+.olex.-grid > .olex__item.-sp-1 {
+  width: 8.33333%;
+}
+.olex.-grid > .olex__item.-sp-2 {
+  width: 16.66667%;
+}
+.olex.-grid > .olex__item.-sp-3 {
+  width: 25%;
+}
+.olex.-grid > .olex__item.-sp-4 {
+  width: 33.33333%;
+}
+.olex.-grid > .olex__item.-sp-5 {
+  width: 41.66667%;
+}
+.olex.-grid > .olex__item.-sp-6 {
+  width: 50%;
+}
+.olex.-grid > .olex__item.-sp-7 {
+  width: 58.33333%;
+}
+.olex.-grid > .olex__item.-sp-8 {
+  width: 66.66667%;
+}
+.olex.-grid > .olex__item.-sp-9 {
+  width: 75%;
+}
+.olex.-grid > .olex__item.-sp-10 {
+  width: 83.33333%;
+}
+.olex.-grid > .olex__item.-sp-11 {
+  width: 91.66667%;
+}
+.olex.-grid > .olex__item.-sp-12 {
+  width: 100%;
+}
+.olex.-grid > .olex__item.-sp-five {
+  width: 20%;
+}
+
+@media screen and (min-width: 768px) {
+  .olex.-gutter {
+    margin: -8px;
+  }
+
+  .olex.-gutter > .olex__item {
+    border-width: 8px;
+  }
+
+  .olex.-grid > .olex__item.-tab-1 {
+    width: 8.33333%;
+  }
+  .olex.-grid > .olex__item.-tab-2 {
+    width: 16.66667%;
+  }
+  .olex.-grid > .olex__item.-tab-3 {
+    width: 25%;
+  }
+  .olex.-grid > .olex__item.-tab-4 {
+    width: 33.33333%;
+  }
+  .olex.-grid > .olex__item.-tab-5 {
+    width: 41.66667%;
+  }
+  .olex.-grid > .olex__item.-tab-6 {
+    width: 50%;
+  }
+  .olex.-grid > .olex__item.-tab-7 {
+    width: 58.33333%;
+  }
+  .olex.-grid > .olex__item.-tab-8 {
+    width: 66.66667%;
+  }
+  .olex.-grid > .olex__item.-tab-9 {
+    width: 75%;
+  }
+  .olex.-grid > .olex__item.-tab-10 {
+    width: 83.33333%;
+  }
+  .olex.-grid > .olex__item.-tab-11 {
+    width: 91.66667%;
+  }
+  .olex.-grid > .olex__item.-tab-12 {
+    width: 100%;
+  }
+  .olex.-grid > .olex__item.-tab-five {
+    width: 20%;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .olex.-gutter {
+    margin: -12px;
+  }
+
+  .olex.-gutter > .olex__item {
+    border-width: 12px;
+  }
+
+  .olex.-grid > .olex__item.-pc-1 {
+    width: 8.33333%;
+  }
+  .olex.-grid > .olex__item.-pc-2 {
+    width: 16.66667%;
+  }
+  .olex.-grid > .olex__item.-pc-3 {
+    width: 25%;
+  }
+  .olex.-grid > .olex__item.-pc-4 {
+    width: 33.33333%;
+  }
+  .olex.-grid > .olex__item.-pc-5 {
+    width: 41.66667%;
+  }
+  .olex.-grid > .olex__item.-pc-6 {
+    width: 50%;
+  }
+  .olex.-grid > .olex__item.-pc-7 {
+    width: 58.33333%;
+  }
+  .olex.-grid > .olex__item.-pc-8 {
+    width: 66.66667%;
+  }
+  .olex.-grid > .olex__item.-pc-9 {
+    width: 75%;
+  }
+  .olex.-grid > .olex__item.-pc-10 {
+    width: 83.33333%;
+  }
+  .olex.-grid > .olex__item.-pc-11 {
+    width: 91.66667%;
+  }
+  .olex.-grid > .olex__item.-pc-12 {
+    width: 100%;
+  }
+  .olex.-grid > .olex__item.-pc-five {
+    width: 20%;
+  }
+}
