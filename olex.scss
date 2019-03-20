@@ -1,0 +1,249 @@
+/*! olex v1.0.0| MIT License | https://github.com/ShivaHiro/olexcss */
+/*
+# 俺のフレキシブルレイアウト
+Oreno Flexible Layout
+
+## 基本
+
+```html
+<div class="olex">
+  <div class="olex__item">A</div>
+  <div class="olex__item">B</div>
+  <div class="olex__item">C</div>
+</div>
+```
+*/
+.olex {
+  display: table;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  font-size: 0;
+
+  &__item {
+    display: inline-block;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    margin: 0;
+    vertical-align: top;
+    text-align: left;
+    font-size: medium;
+  }
+}
+
+/*
+## 水平方向の位置揃え
+
+```html
+<div class="olex -center">
+  <div class="olex__item">A</div>
+  <div class="olex__item">B</div>
+  <div class="olex__item">C</div>
+</div>
+```
+*/
+.olex {
+  &.-left {
+    text-align: left;
+  }
+  &.-center {
+    text-align: center;
+  }
+  &.-right {
+    text-align: right;
+  }
+}
+
+/*
+## 垂直方向の位置揃え
+
+```html
+<div class="olex -middle">
+  <div class="olex__item">A</div>
+  <div class="olex__item">B</div>
+  <div class="olex__item">C</div>
+</div>
+```
+*/
+.olex {
+  &.-top {
+    > .olex__item {
+      vertical-align: top;
+    }
+  }
+
+  &.-middle {
+    > .olex__item {
+      vertical-align: middle;
+    }
+  }
+
+  &.-bottom {
+    > .olex__item {
+      vertical-align: bottom;
+    }
+  }
+}
+
+
+/*
+## 逆順
+
+```html
+<div class="olex -reverse">
+  <div class="olex__item">A</div>
+  <div class="olex__item">B</div>
+  <div class="olex__item">C</div>
+</div>
+```
+*/
+.olex.-reverse {
+  direction: rtl;
+
+  > .olex__item {
+    direction: ltr;
+  }
+}
+
+
+/*
+## 均等配置
+
+```html
+<div class="olex -justify">
+  <div class="olex__item">A</div>
+  <div class="olex__item">B</div>
+  <div class="olex__item">C</div>
+</div>
+```
+*/
+.olex.-justify {
+  display: block;
+  text-align: justify;
+  text-justify: distribute-all-lines;
+
+  &:after {
+    display: inline-block;
+    width: 100%;
+    content: '';
+  }
+}
+
+
+/*
+## アイテムの水平方向の位置揃え
+
+```html
+<div class="olex ">
+  <div class="olex__item">A</div>
+  <div class="olex__item">B</div>
+  <div class="olex__item">C</div>
+</div>
+```
+*/
+.olex__item {
+  &.-left {
+    text-align: left;
+  }
+  &.-center {
+    text-align: center;
+  }
+  &.-right {
+    text-align: right;
+  }
+}
+
+
+/*
+## グリッドシステム
+
+```html
+<div class="olex -grid -gutter">
+  <div class="olex__item -sp-6 -tab-4">A</div>
+  <div class="olex__item -sp-6 -tab-4">B</div>
+  <div class="olex__item -tab-4 -pc-12>C</div>
+</div>
+```
+*/
+
+$column: 12; // カラム数
+$gutter-sp: 8px; // スマホ時の間隔
+$gutter-tab: 16px; // タブレット時の間隔
+$gutter-pc: 24px; // PC時の間隔
+
+.olex {
+  &.-gutter {
+    display: block;
+    margin: -($gutter-sp / 2);
+    width: auto;
+
+    > .olex__item {
+      border: ($gutter-sp / 2) solid transparent;
+      background-clip: padding-box;
+    }
+  }
+
+  &.-grid {
+    > .olex__item {
+      width: 100%;
+
+      @for $i from 1 through $column {
+        &.-sp-#{$i} {
+          width: percentage($i / $column);
+        }
+      }
+
+      &.-sp-five {
+        width: 20%;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .olex {
+    &.-gutter {
+      margin: -($gutter-tab / 2);
+
+      > .olex__item {
+        border-width: ($gutter-tab / 2);
+      }
+    }
+
+    > .olex__item {
+     @for $i from 1 through $column {
+        &.-tab-#{$i} {
+          width: percentage($i / $column);
+        }
+      }
+
+      &.-tab-five {
+        width: 20%;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .olex {
+    &.-gutter {
+      margin: -($gutter-pc / 2);
+
+      > .olex__item {
+        border-width: ($gutter-pc / 2);
+      }
+    }
+
+    > .olex__item {
+     @for $i from 1 through $column {
+        &.-tab-#{$i} {
+          width: percentage($i / $column);
+        }
+      }
+
+      &.-pc-five {
+        width: 20%;
+      }
+    }
+  }
+}
