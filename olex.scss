@@ -54,7 +54,6 @@ Oreno Flexible Layout
   }
 }
 
-
 /*
 ## 垂直方向の位置揃え
 
@@ -85,7 +84,6 @@ Oreno Flexible Layout
     }
   }
 }
-
 
 /*
 ## 逆順
@@ -130,7 +128,6 @@ Oreno Flexible Layout
   }
 }
 
-
 /*
 ## アイテムの水平方向の位置揃え
 
@@ -154,15 +151,14 @@ Oreno Flexible Layout
   }
 }
 
-
 /*
 ## グリッドシステム
 
 ```html
 <div class="olex -grid -gutter">
-  <div class="olex__item -sp-6 -tab-4">A</div>
-  <div class="olex__item -sp-6 -tab-4">B</div>
-  <div class="olex__item -tab-4 -pc-12>C</div>
+  <div class="olex__item -sp-6 -tab-4 -lap-3">A</div>
+  <div class="olex__item -sp-6 -tab-4 -lap-3">B</div>
+  <div class="olex__item -tab-4 -lap-6 -desk-12">C</div>
 </div>
 ```
 */
@@ -170,7 +166,8 @@ Oreno Flexible Layout
 $column: 12; // カラム数
 $gutter-sp: 8px; // スマホ時の間隔
 $gutter-tab: 16px; // タブレット時の間隔
-$gutter-pc: 24px; // PC時の間隔
+$gutter-lap: 24px; // ラップトップ時の間隔
+$gutter-desk: 24px; // デスクトップ時の間隔
 
 .olex {
   &.-gutter {
@@ -228,21 +225,45 @@ $gutter-pc: 24px; // PC時の間隔
 @media screen and (min-width: 1024px) {
   .olex {
     &.-gutter {
-      margin: -($gutter-pc / 2);
+      margin: -($gutter-lap / 2);
 
       > .olex__item {
-        border-width: ($gutter-pc / 2);
+        border-width: ($gutter-lap / 2);
       }
     }
 
     > .olex__item {
      @for $i from 1 through $column {
-        &.-tab-#{$i} {
+        &.-lap-#{$i} {
           width: percentage($i / $column);
         }
       }
 
-      &.-pc-five {
+      &.-lap-five {
+        width: 20%;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .olex {
+    &.-gutter {
+      margin: -($gutter-desk / 2);
+
+      > .olex__item {
+        border-width: ($gutter-desk / 2);
+      }
+    }
+
+    > .olex__item {
+     @for $i from 1 through $column {
+        &.-desk-#{$i} {
+          width: percentage($i / $column);
+        }
+      }
+
+      &.-desk-five {
         width: 20%;
       }
     }
