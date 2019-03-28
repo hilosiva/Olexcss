@@ -33,6 +33,25 @@ Oreno Flexible Layout
 }
 
 /*
+## 逆順
+
+```html
+<div class="olex -reverse">
+  <div class="olex__item">A</div>
+  <div class="olex__item">B</div>
+  <div class="olex__item">C</div>
+</div>
+```
+*/
+.olex.-reverse {
+  direction: rtl;
+}
+
+.olex.-reverse > .olex__item {
+  direction: ltr;
+}
+
+/*
 ## 水平方向の位置揃え
 
 ```html
@@ -53,6 +72,18 @@ Oreno Flexible Layout
 
 .olex.-right {
   text-align: right;
+}
+
+.olex.-justify {
+  display: block;
+  text-align: justify;
+  text-justify: distribute-all-lines;
+}
+
+.olex.-justify:after {
+  display: inline-block;
+  width: 100%;
+  content: '';
 }
 
 /*
@@ -76,48 +107,6 @@ Oreno Flexible Layout
 
 .olex.-bottom > .olex__item {
   vertical-align: bottom;
-}
-
-/*
-## 逆順
-
-```html
-<div class="olex -reverse">
-  <div class="olex__item">A</div>
-  <div class="olex__item">B</div>
-  <div class="olex__item">C</div>
-</div>
-```
-*/
-.olex.-reverse {
-  direction: rtl;
-}
-
-.olex.-reverse > .olex__item {
-  direction: ltr;
-}
-
-/*
-## 均等配置
-
-```html
-<div class="olex -justify">
-  <div class="olex__item">A</div>
-  <div class="olex__item">B</div>
-  <div class="olex__item">C</div>
-</div>
-```
-*/
-.olex.-justify {
-  display: block;
-  text-align: justify;
-  text-justify: distribute-all-lines;
-}
-
-.olex.-justify:after {
-  display: inline-block;
-  width: 100%;
-  content: '';
 }
 
 /*
