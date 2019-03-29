@@ -1,5 +1,7 @@
-# Olexbox
-俺のフレキシブルボックスレイアウトCSSライブラリ
+# Olexcss
+俺のフレキシブルレイアウトCSSライブラリ
+(Ore no Flexible Layout CSS Library)
+
 
 ## ブラウザサポート
 - Google Chrome (latest)
@@ -7,3 +9,6 @@
 - Firefox (latest)
 - Safari 3.1+
 - Internet Explorer 9+
+
+## ブラウザサポート
+MIT License.
