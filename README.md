@@ -1,5 +1,5 @@
-# olexcss
-俺のグリッドレイアウト手法 CSSライブラリ
+# Olexbox
+俺のフレキシブルボックスレイアウトCSSライブラリ
 
 ## ブラウザサポート
 - Google Chrome (latest)
