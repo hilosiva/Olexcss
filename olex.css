@@ -143,13 +143,13 @@ Oreno Flexible Layout
 </div>
 ```
 */
-.olex.-gutter {
+.olex.-grid.-gutter {
   display: block;
   margin: -4px;
   width: auto;
 }
 
-.olex.-gutter > .olex__item {
+.olex.-grid.-gutter > .olex__item {
   border: 4px solid transparent;
   background-clip: padding-box;
 }
@@ -211,145 +211,145 @@ Oreno Flexible Layout
 }
 
 @media screen and (min-width: 768px) {
-  .olex.-gutter {
+  .olex.-grid.-gutter {
     margin: -8px;
   }
-  .olex.-gutter > .olex__item {
+  .olex.-grid.-gutter > .olex__item {
     border-width: 8px;
   }
-  .olex > .olex__item.-tab-1 {
+  .olex.-grid > .olex__item.-tab-1 {
     width: 8.33333%;
   }
-  .olex > .olex__item.-tab-2 {
+  .olex.-grid > .olex__item.-tab-2 {
     width: 16.66667%;
   }
-  .olex > .olex__item.-tab-3 {
+  .olex.-grid > .olex__item.-tab-3 {
     width: 25%;
   }
-  .olex > .olex__item.-tab-4 {
+  .olex.-grid > .olex__item.-tab-4 {
     width: 33.33333%;
   }
-  .olex > .olex__item.-tab-5 {
+  .olex.-grid > .olex__item.-tab-5 {
     width: 41.66667%;
   }
-  .olex > .olex__item.-tab-6 {
+  .olex.-grid > .olex__item.-tab-6 {
     width: 50%;
   }
-  .olex > .olex__item.-tab-7 {
+  .olex.-grid > .olex__item.-tab-7 {
     width: 58.33333%;
   }
-  .olex > .olex__item.-tab-8 {
+  .olex.-grid > .olex__item.-tab-8 {
     width: 66.66667%;
   }
-  .olex > .olex__item.-tab-9 {
+  .olex.-grid > .olex__item.-tab-9 {
     width: 75%;
   }
-  .olex > .olex__item.-tab-10 {
+  .olex.-grid > .olex__item.-tab-10 {
     width: 83.33333%;
   }
-  .olex > .olex__item.-tab-11 {
+  .olex.-grid > .olex__item.-tab-11 {
     width: 91.66667%;
   }
-  .olex > .olex__item.-tab-12 {
+  .olex.-grid > .olex__item.-tab-12 {
     width: 100%;
   }
-  .olex > .olex__item.-tab-five {
+  .olex.-grid > .olex__item.-tab-five {
     width: 20%;
   }
 }
 
 @media screen and (min-width: 1024px) {
-  .olex.-gutter {
+  .olex.-grid.-gutter {
     margin: -12px;
   }
-  .olex.-gutter > .olex__item {
+  .olex.-grid.-gutter > .olex__item {
     border-width: 12px;
   }
-  .olex > .olex__item.-lap-1 {
+  .olex.-grid > .olex__item.-lap-1 {
     width: 8.33333%;
   }
-  .olex > .olex__item.-lap-2 {
+  .olex.-grid > .olex__item.-lap-2 {
     width: 16.66667%;
   }
-  .olex > .olex__item.-lap-3 {
+  .olex.-grid > .olex__item.-lap-3 {
     width: 25%;
   }
-  .olex > .olex__item.-lap-4 {
+  .olex.-grid > .olex__item.-lap-4 {
     width: 33.33333%;
   }
-  .olex > .olex__item.-lap-5 {
+  .olex.-grid > .olex__item.-lap-5 {
     width: 41.66667%;
   }
-  .olex > .olex__item.-lap-6 {
+  .olex.-grid > .olex__item.-lap-6 {
     width: 50%;
   }
-  .olex > .olex__item.-lap-7 {
+  .olex.-grid > .olex__item.-lap-7 {
     width: 58.33333%;
   }
-  .olex > .olex__item.-lap-8 {
+  .olex.-grid > .olex__item.-lap-8 {
     width: 66.66667%;
   }
-  .olex > .olex__item.-lap-9 {
+  .olex.-grid > .olex__item.-lap-9 {
     width: 75%;
   }
-  .olex > .olex__item.-lap-10 {
+  .olex.-grid > .olex__item.-lap-10 {
     width: 83.33333%;
   }
-  .olex > .olex__item.-lap-11 {
+  .olex.-grid > .olex__item.-lap-11 {
     width: 91.66667%;
   }
-  .olex > .olex__item.-lap-12 {
+  .olex.-grid > .olex__item.-lap-12 {
     width: 100%;
   }
-  .olex > .olex__item.-lap-five {
+  .olex.-grid > .olex__item.-lap-five {
     width: 20%;
   }
 }
 
 @media screen and (min-width: 1280px) {
-  .olex.-gutter {
+  .olex.-grid.-gutter {
     margin: -12px;
   }
-  .olex.-gutter > .olex__item {
+  .olex.-grid.-gutter > .olex__item {
     border-width: 12px;
   }
-  .olex > .olex__item.-desk-1 {
+  .olex.-grid > .olex__item.-desk-1 {
     width: 8.33333%;
   }
-  .olex > .olex__item.-desk-2 {
+  .olex.-grid > .olex__item.-desk-2 {
     width: 16.66667%;
   }
-  .olex > .olex__item.-desk-3 {
+  .olex.-grid > .olex__item.-desk-3 {
     width: 25%;
   }
-  .olex > .olex__item.-desk-4 {
+  .olex.-grid > .olex__item.-desk-4 {
     width: 33.33333%;
   }
-  .olex > .olex__item.-desk-5 {
+  .olex.-grid > .olex__item.-desk-5 {
     width: 41.66667%;
   }
-  .olex > .olex__item.-desk-6 {
+  .olex.-grid > .olex__item.-desk-6 {
     width: 50%;
   }
-  .olex > .olex__item.-desk-7 {
+  .olex.-grid > .olex__item.-desk-7 {
     width: 58.33333%;
   }
-  .olex > .olex__item.-desk-8 {
+  .olex.-grid > .olex__item.-desk-8 {
     width: 66.66667%;
   }
-  .olex > .olex__item.-desk-9 {
+  .olex.-grid > .olex__item.-desk-9 {
     width: 75%;
   }
-  .olex > .olex__item.-desk-10 {
+  .olex.-grid > .olex__item.-desk-10 {
     width: 83.33333%;
   }
-  .olex > .olex__item.-desk-11 {
+  .olex.-grid > .olex__item.-desk-11 {
     width: 91.66667%;
   }
-  .olex > .olex__item.-desk-12 {
+  .olex.-grid > .olex__item.-desk-12 {
     width: 100%;
   }
-  .olex > .olex__item.-desk-five {
+  .olex.-grid > .olex__item.-desk-five {
     width: 20%;
   }
 }
