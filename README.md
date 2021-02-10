@@ -46,10 +46,20 @@ Olex Item に `data-grid `属性を使ってデバイスのプレフィクスと
 
 | プレフィックス | 適用画面サイズ |
 | -------------- | -------------- |
-| sp             | 1px ~          |
-| tab            | 768px ~        |
-| lap            | 1024px ~       |
-| desk           | 1200px ~       |
+| `sp`           | 1px ~          |
+| `tab`          | 768px ~        |
+| `lap`          | 1024px ~       |
+| `desk`         | 1200px ~       |
+
+メディアクエリを `min-width` しか使ってないので、`sp`というプレフィックスはスマホだけじゃなくスマホ以上全てに適用されて、同様に`tab` は、タブレット以上全てに適用されるような仕様になってます。
+
+で、例えばどの画面幅でもピッタリ半分半分の 2 段組みにしたかったら、12 分割のグリッドシステムなので、1 段につき 6 グリッド（列）ずつ使えばちょうど半分になるわけです。（12 分割 ÷ 2 段 = 6 グリッド）
+
+つまり`data-grid`属性に `sp6`と指定すると、どのデバイスでも 2 つのボックスをちょうど半分ずつにわけることができます。
+
+このように１行の合計が 12 グリッドになるように調整するように、グリッド数を指定すれば OK です。
+
+なので、3 段組みにしたければ、`sp4` を 3 つ並べればいいですし、4 段組みにしたければ、`sp3` を 4 つ並べれば OK です。`sp8` と `sp4` などの組み合わせで 12 グリッドを使っても大丈夫です。
 
 ```html
 <div class="olex">
@@ -67,11 +77,11 @@ Olex Item 間にスペースを設ける場合は、Olex Container に`data-gutt
 
 ブレイクポイントごとに切り替えたい場合は、カスタマイズしてください。
 
-| サイズ | スペースサイズ |
-| ------ | -------------- |
-| small  | 1vw            |
-| normal | 2vw            |
-| large  | 3vw            |
+| サイズ   | スペースサイズ |
+| -------- | -------------- |
+| `small`  | 1vw            |
+| `normal` | 2vw            |
+| `large`  | 3vw            |
 
 ```html
 <div class="olex" data-gutter="normal">
@@ -86,15 +96,15 @@ Olex Item 間にスペースを設ける場合は、Olex Container に`data-gutt
 Olex Item 全体の位置揃えをするには、Olex Container に `data-align`属性を使って揃える位置を表すキーワードを指定する。
 なお、水平方向と垂直方向を同時に指定する場合は、半角スペースで区切る。
 
-| 属性値  | 役割                   |
-| ------- | ---------------------- |
-| start   | 左揃え（逆順の時は右） |
-| center  | 中央揃え               |
-| end     | 右揃え                 |
-| justify | 両端揃え               |
-| top     | 上揃え                 |
-| middle  | 中央（優柔不断）       |
-| bottom  | 模擬揃え               |
+| 属性値    | 役割                   |
+| --------- | ---------------------- |
+| `start`   | 左揃え（逆順の時は右） |
+| `center`  | 中央揃え               |
+| `end`     | 右揃え                 |
+| `justify` | 両端揃え               |
+| `top`     | 上揃え                 |
+| `middle`  | 中央（優柔不断）       |
+| `bottom`  | 模擬揃え               |
 
 ```html
 <div class="olex" data-align="center">
@@ -119,15 +129,10 @@ Olex Item を個別に位置揃えをするには、Olex Item に `data-align`�
 
 Olex Item の並び順を指定するには Olex Container に `data-dir`属性を使って、方向を表すキーワードを指定する。
 
-| 属性値  | 役割                   |
-| ------- | ---------------------- |
-| start   | 左揃え（逆順の時は右） |
-| center  | 中央揃え               |
-| end     | 右揃え                 |
-| justify | 右揃え                 |
-| top     | 右揃え                 |
-| middle  | 右揃え                 |
-| bottom  | 右揃え                 |
+| 属性値    | 役割 |
+| --------- | ---- |
+| `normal`  | 通常 |
+| `reverse` | 逆順 |
 
 ```html
 <div class="olex" data-dir="reverse">
@@ -142,7 +147,8 @@ Olex Item の並び順を指定するには Olex Container に `data-dir`属性�
 - Google Chrome (latest)
 - Opera (latest)
 - Firefox (latest)
-- Safari 3.1+
+- Safari (latest)
+- Edge (latest)
 - Internet Explorer 11+
 
 ## ライセンス
