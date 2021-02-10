@@ -178,19 +178,19 @@
 }
 
 .olex[data-gutter="normal"] {
-  margin: -1.5vw;
+  margin: -1vw;
 }
 
 .olex[data-gutter="normal"] > .olex__item {
-  border-width: 1.5vw;
+  border-width: 1vw;
 }
 
 .olex[data-gutter="large"] {
-  margin: -2.5vw;
+  margin: -1.5vw;
 }
 
 .olex[data-gutter="large"] > .olex__item {
-  border-width: 2.5vw;
+  border-width: 1.5vw;
 }
 
 .olex__item[data-grid~="sp1"] {

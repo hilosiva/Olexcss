@@ -14,15 +14,15 @@ $column: 12;
 // Gutter Size
 $gutters: (
   "small": 1vw,
-  "normal": 3vw,
-  "large": 5vw,
+  "normal": 2vw,
+  "large": 3vw,
 ) !default;
 
 // Breakpoints
 $breakpoints: (
-  "tab": "(min-width: 768px)",
-  "lap": "(min-width: 1024px)",
-  "desk": "(min-width: 1200px)",
+  "tab": 768px,
+  "lap": 1024px,
+  "desk": 1200px,
 ) !default;
 
 /*
@@ -181,7 +181,7 @@ $breakpoints: (
 }
 
 @each $key, $val in $breakpoints {
-  @media screen and #{$val} {
+  @media screen and (min-width: $val) {
     .olex {
       &__item {
         @for $i from 1 through $column {
