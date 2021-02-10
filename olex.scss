@@ -20,15 +20,9 @@ $gutters: (
 
 // Breakpoints
 $breakpoints: (
-  "tab": (
-    min-width: 768px,
-  ),
-  "lap": (
-    min-width: 1024px,
-  ),
-  "desk": (
-    min-width: 1200px,
-  ),
+  "tab": "(min-width: 768px)",
+  "lap": "(min-width: 1024px)",
+  "desk": "(min-width: 1200px)",
 ) !default;
 
 /*
@@ -163,27 +157,13 @@ $breakpoints: (
     }
   }
 
-  &[data-gutter="small"] {
-    margin: -(map-get($gutters, "small") / 2);
+  @each $key, $val in $gutters {
+    &[data-gutter="#{$key}"] {
+      margin: -($val / 2);
 
-    & > .olex__item {
-      border-width: (map-get($gutters, "small") / 2);
-    }
-  }
-
-  &[data-gutter="normal"] {
-    margin: -(map-get($gutters, "normal") / 2);
-
-    & > .olex__item {
-      border-width: (map-get($gutters, "normal") / 2);
-    }
-  }
-
-  &[data-gutter="large"] {
-    margin: -(map-get($gutters, "large") / 2);
-
-    & > .olex__item {
-      border-width: (map-get($gutters, "large") / 2);
+      & > .olex__item {
+        border-width: ($val / 2);
+      }
     }
   }
 
@@ -200,61 +180,23 @@ $breakpoints: (
   }
 }
 
-@media screen and #{inspect(map-get($breakpoints, 'tab'))} {
-  .olex {
-    &__item {
-      @for $i from 1 through $column {
-        &[data-grid~="tab#{$i}"] {
-          width: percentage($i / $column);
+@each $key, $val in $breakpoints {
+  @media screen and #{$val} {
+    .olex {
+      &__item {
+        @for $i from 1 through $column {
+          &[data-grid~="#{$key + $i}"] {
+            width: percentage($i / $column);
+          }
         }
-      }
 
-      &[data-grid~="tabFive"] {
-        width: 20%;
-      }
-
-      &[data-grid~="tabAuto"] {
-        width: auto;
-      }
-    }
-  }
-}
-
-@media screen and #{inspect(map-get($breakpoints, 'lap'))} {
-  .olex {
-    &__item {
-      @for $i from 1 through $column {
-        &[data-grid~="lap#{$i}"] {
-          width: percentage($i / $column);
+        &[data-grid~="#{$key}Five"] {
+          width: 20%;
         }
-      }
 
-      &[data-grid~="lapFive"] {
-        width: 20%;
-      }
-
-      &[data-grid~="lapAuto"] {
-        width: auto;
-      }
-    }
-  }
-}
-
-@media screen and #{inspect(map-get($breakpoints, 'desk'))} {
-  .olex {
-    &__item {
-      @for $i from 1 through $column {
-        &[data-grid~="desk#{$i}"] {
-          width: percentage($i / $column);
+        &[data-grid~="#{$key}Auto"] {
+          width: auto;
         }
-      }
-
-      &[data-grid~="deskFive"] {
-        width: 20%;
-      }
-
-      &[data-grid~="deskAuto"] {
-        width: auto;
       }
     }
   }
