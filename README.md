@@ -5,9 +5,20 @@
 
 ## Overview
 
-Flexbox を活用したグリッドシステム
+Olex は Ore no Flexible CSS Grid System の略で、Web ページのレイアウトを比較的簡単に組むことができる僕流、いや俺流の CSS ライブラリです。
+
+## Demo
+
+[デモサイト]](
+https://shibajuku.net/demo/olex/) はこちら。
+
+このページのレイアウトは Olex のみで出来上がっています。（装飾やアニメーションは別）
+
+Olex を使えばこの様なレイアウトの Web ページでしたら容易に形にすることができます。
 
 ## Install
+
+Olex を使いたい HTML ファイルに「olex.min.css」を読み込む
 
 ```html
 <link rel="stylesheet" href="olex.min.css" />
@@ -33,6 +44,13 @@ Olex Item に `data-grid `属性を使ってデバイスのプレフィクスと
 
 ブレイクポイントはカスタマイズしやすいよう、sass ファイルに変数で設定できるようにしてます。
 
+| プレフィックス | 適用画面サイズ |
+| -------------- | -------------- |
+| sp             | 1px ~          |
+| tab            | 768px ~        |
+| lap            | 1024px ~       |
+| desk           | 1200px ~       |
+
 ```html
 <div class="olex">
   <div class="olex__item" data-grid="sp12 tab4 lap6">A</div>
@@ -49,6 +67,12 @@ Olex Item 間にスペースを設ける場合は、Olex Container に`data-gutt
 
 ブレイクポイントごとに切り替えたい場合は、カスタマイズしてください。
 
+| サイズ | スペースサイズ |
+| ------ | -------------- |
+| small  | 1vw            |
+| normal | 2vw            |
+| large  | 3vw            |
+
 ```html
 <div class="olex" data-gutter="normal">
   <div class="olex__item" data-grid="sp12 tab4 lap6">A</div>
@@ -60,7 +84,17 @@ Olex Item 間にスペースを設ける場合は、Olex Container に`data-gutt
 ## Alignment
 
 Olex Item 全体の位置揃えをするには、Olex Container に `data-align`属性を使って揃える位置を表すキーワードを指定する。
-なお、水平方向と垂直方向を同時に指定する場合は、半角スペースで区切る
+なお、水平方向と垂直方向を同時に指定する場合は、半角スペースで区切る。
+
+| 属性値  | 役割                   |
+| ------- | ---------------------- |
+| start   | 左揃え（逆順の時は右） |
+| center  | 中央揃え               |
+| end     | 右揃え                 |
+| justify | 両端揃え               |
+| top     | 上揃え                 |
+| middle  | 中央（優柔不断）       |
+| bottom  | 模擬揃え               |
 
 ```html
 <div class="olex" data-align="center">
@@ -84,6 +118,16 @@ Olex Item を個別に位置揃えをするには、Olex Item に `data-align`�
 ## Direction
 
 Olex Item の並び順を指定するには Olex Container に `data-dir`属性を使って、方向を表すキーワードを指定する。
+
+| 属性値  | 役割                   |
+| ------- | ---------------------- |
+| start   | 左揃え（逆順の時は右） |
+| center  | 中央揃え               |
+| end     | 右揃え                 |
+| justify | 右揃え                 |
+| top     | 右揃え                 |
+| middle  | 右揃え                 |
+| bottom  | 右揃え                 |
 
 ```html
 <div class="olex" data-dir="reverse">
