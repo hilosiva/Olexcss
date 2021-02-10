@@ -31,6 +31,8 @@ Olex Container と Olex Item を用意する
 
 Olex Item に `data-grid `属性を使ってデバイスのプレフィクスとグリッド数を指定します。
 
+ブレイクポイントはカスタマイズしやすいよう、sass ファイルに変数で設定できるようにしてます。
+
 ```html
 <div class="olex">
   <div class="olex__item" data-grid="sp12 tab4 lap6">A</div>
@@ -41,7 +43,11 @@ Olex Item に `data-grid `属性を使ってデバイスのプレフィクスと
 
 ## Gutter
 
-Olex Item 間にスペースを設ける場合は、Olex Container に`data-gutter'属性を使ってスペースの量を表す値を指定する
+Olex Item 間にスペースを設ける場合は、Olex Container に`data-gutter`属性を使ってスペースの量を表す値を指定する。
+
+スペースのサイズはプロジェクトによって様々だと思いますので、カスタマイズしやすいよう、sass ファイルに変数で設定できるようにしてます。
+
+ブレイクポイントごとに切り替えたい場合は、カスタマイズしてください。
 
 ```html
 <div class="olex" data-gutter="normal">

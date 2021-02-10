@@ -170,35 +170,27 @@
 }
 
 .olex[data-gutter="small"] {
-  margin: -4px;
+  margin: -0.5vw;
 }
 
 .olex[data-gutter="small"] > .olex__item {
-  border-width: 4px;
+  border-width: 0.5vw;
 }
 
 .olex[data-gutter="normal"] {
-  margin: -8px;
+  margin: -1.5vw;
 }
 
 .olex[data-gutter="normal"] > .olex__item {
-  border-width: 8px;
+  border-width: 1.5vw;
 }
 
 .olex[data-gutter="large"] {
-  margin: -24px;
+  margin: -2.5vw;
 }
 
 .olex[data-gutter="large"] > .olex__item {
-  border-width: 24px;
-}
-
-.olex[data-gutter="spNone"] {
-  margin: 0;
-}
-
-.olex[data-gutter="spNone"] > .olex__item {
-  border-width: 0;
+  border-width: 2.5vw;
 }
 
 .olex__item[data-grid~="sp1"] {
@@ -254,24 +246,6 @@
 }
 
 @media screen and (min-width: 768px) {
-  .olex[data-gutter="small"] {
-    margin: -4px;
-  }
-  .olex[data-gutter="small"] > .olex__item {
-    border-width: 4px;
-  }
-  .olex[data-gutter="normal"] {
-    margin: -12px;
-  }
-  .olex[data-gutter="normal"] > .olex__item {
-    border-width: 12px;
-  }
-  .olex[data-gutter="large"] {
-    margin: -24px;
-  }
-  .olex[data-gutter="large"] > .olex__item {
-    border-width: 24px;
-  }
   .olex__item[data-grid~="tab1"] {
     width: 8.33333%;
   }
@@ -317,24 +291,6 @@
 }
 
 @media screen and (min-width: 1024px) {
-  .olex[data-gutter="small"] {
-    margin: -8px;
-  }
-  .olex[data-gutter="small"] > .olex__item {
-    border-width: 8px;
-  }
-  .olex[data-gutter="normal"] {
-    margin: -16px;
-  }
-  .olex[data-gutter="normal"] > .olex__item {
-    border-width: 16px;
-  }
-  .olex[data-gutter="large"] {
-    margin: -32px;
-  }
-  .olex[data-gutter="large"] > .olex__item {
-    border-width: 32px;
-  }
   .olex__item[data-grid~="lap1"] {
     width: 8.33333%;
   }
@@ -380,24 +336,6 @@
 }
 
 @media screen and (min-width: 1200px) {
-  .olex[data-gutter="small"] {
-    margin: -8px;
-  }
-  .olex[data-gutter="small"] > .olex__item {
-    border-width: 8px;
-  }
-  .olex[data-gutter="normal"] {
-    margin: -20px;
-  }
-  .olex[data-gutter="normal"] > .olex__item {
-    border-width: 20px;
-  }
-  .olex[data-gutter="large"] {
-    margin: -40px;
-  }
-  .olex[data-gutter="large"] > .olex__item {
-    border-width: 40px;
-  }
   .olex__item[data-grid~="desk1"] {
     width: 8.33333%;
   }

@@ -8,13 +8,28 @@
 /*
  Settings
 --------------------------------- */
-$column: 12; // グリッド数の設定
+// Grid Column
+$column: 12;
 
-$gutter-minsp: 8px; // 小さいスマホ時の間隔
-$gutter-sp: 16px; // スマホ時の間隔
-$gutter-tab: 24px; // タブレット時の間隔
-$gutter-lap: 32px; // ラップトップ時の間隔
-$gutter-desk: 40px; // デスクトップ時の間隔
+// Gutter Size
+$gutters: (
+  "small": 1vw,
+  "normal": 3vw,
+  "large": 5vw,
+) !default;
+
+// Breakpoints
+$breakpoints: (
+  "tab": (
+    min-width: 768px,
+  ),
+  "lap": (
+    min-width: 1024px,
+  ),
+  "desk": (
+    min-width: 1200px,
+  ),
+) !default;
 
 /*
   Base
@@ -149,33 +164,26 @@ $gutter-desk: 40px; // デスクトップ時の間隔
   }
 
   &[data-gutter="small"] {
-    margin: -($gutter-minsp / 2);
+    margin: -(map-get($gutters, "small") / 2);
 
     & > .olex__item {
-      border-width: ($gutter-minsp / 2);
+      border-width: (map-get($gutters, "small") / 2);
     }
   }
 
   &[data-gutter="normal"] {
-    margin: -($gutter-sp / 2);
+    margin: -(map-get($gutters, "normal") / 2);
 
     & > .olex__item {
-      border-width: ($gutter-sp / 2);
+      border-width: (map-get($gutters, "normal") / 2);
     }
   }
 
   &[data-gutter="large"] {
-    margin: -($gutter-tab);
+    margin: -(map-get($gutters, "large") / 2);
 
     & > .olex__item {
-      border-width: ($gutter-tab);
-    }
-  }
-
-  &[data-gutter="spNone"] {
-    margin: 0;
-    & > .olex__item {
-      border-width: 0;
+      border-width: (map-get($gutters, "large") / 2);
     }
   }
 
@@ -192,32 +200,8 @@ $gutter-desk: 40px; // デスクトップ時の間隔
   }
 }
 
-@media screen and (min-width: 768px) {
+@media screen and #{inspect(map-get($breakpoints, 'tab'))} {
   .olex {
-    &[data-gutter="small"] {
-      margin: -($gutter-minsp / 2);
-
-      & > .olex__item {
-        border-width: ($gutter-minsp / 2);
-      }
-    }
-
-    &[data-gutter="normal"] {
-      margin: -($gutter-tab / 2);
-
-      & > .olex__item {
-        border-width: ($gutter-tab / 2);
-      }
-    }
-
-    &[data-gutter="large"] {
-      margin: -($gutter-tab);
-
-      & > .olex__item {
-        border-width: ($gutter-tab);
-      }
-    }
-
     &__item {
       @for $i from 1 through $column {
         &[data-grid~="tab#{$i}"] {
@@ -236,32 +220,8 @@ $gutter-desk: 40px; // デスクトップ時の間隔
   }
 }
 
-@media screen and (min-width: 1024px) {
+@media screen and #{inspect(map-get($breakpoints, 'lap'))} {
   .olex {
-    &[data-gutter="small"] {
-      margin: -($gutter-sp / 2);
-
-      & > .olex__item {
-        border-width: ($gutter-sp / 2);
-      }
-    }
-
-    &[data-gutter="normal"] {
-      margin: -($gutter-lap / 2);
-
-      & > .olex__item {
-        border-width: ($gutter-lap / 2);
-      }
-    }
-
-    &[data-gutter="large"] {
-      margin: -($gutter-lap);
-
-      & > .olex__item {
-        border-width: ($gutter-lap);
-      }
-    }
-
     &__item {
       @for $i from 1 through $column {
         &[data-grid~="lap#{$i}"] {
@@ -280,31 +240,8 @@ $gutter-desk: 40px; // デスクトップ時の間隔
   }
 }
 
-@media screen and (min-width: 1200px) {
+@media screen and #{inspect(map-get($breakpoints, 'desk'))} {
   .olex {
-    &[data-gutter="small"] {
-      margin: -($gutter-sp / 2);
-
-      & > .olex__item {
-        border-width: ($gutter-sp / 2);
-      }
-    }
-    &[data-gutter="normal"] {
-      margin: -($gutter-desk / 2);
-
-      & > .olex__item {
-        border-width: ($gutter-desk / 2);
-      }
-    }
-
-    &[data-gutter="large"] {
-      margin: -($gutter-desk);
-
-      & > .olex__item {
-        border-width: ($gutter-desk);
-      }
-    }
-
     &__item {
       @for $i from 1 through $column {
         &[data-grid~="desk#{$i}"] {
