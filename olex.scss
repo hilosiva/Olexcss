@@ -1,257 +1,323 @@
-/*! olex v1.0.0| MIT License | https://github.com/hilosiva/olexcss */
+@charset 'UTF-8';
+/*! olex v2.0.0| MIT License | https://github.com/hilosiva/olexcss */
+
+/* ============================================
+  Olex - Ore no Flexible CSS Grid System
+============================================ */
+
 /*
-# 俺のフレキシブルレイアウト
-Oreno Flexible Layout
+ Settings
+--------------------------------- */
+$column: 12; // グリッド数の設定
 
-## 基本
+$gutter-minsp: 8px; // 小さいスマホ時の間隔
+$gutter-sp: 16px; // スマホ時の間隔
+$gutter-tab: 24px; // タブレット時の間隔
+$gutter-lap: 32px; // ラップトップ時の間隔
+$gutter-desk: 40px; // デスクトップ時の間隔
 
-```html
-<div class="olex">
-  <div class="olex__item">A</div>
-  <div class="olex__item">B</div>
-  <div class="olex__item">C</div>
-</div>
-```
+/*
+  Base
+--------------------------------- */
+/*
+  <div class="olex">
+    <div class="olex__item">A</div>
+    <div class="olex__item">B</div>
+    <div class="olex__item">C</div>
+  </div>
 */
+
 .olex {
-  display: table;
+  display: flex;
+  flex-wrap: wrap;
   margin: 0;
   padding: 0;
-  width: 100%;
-  font-size: 0;
 
   &__item {
-    display: inline-block;
-    -webkit-box-sizing: border-box;
-            box-sizing: border-box;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
     margin: 0;
-    vertical-align: top;
-    text-align: left;
-    font-size: medium;
   }
 }
 
 /*
-## 逆順
-
-```html
-<div class="olex -reverse">
-  <div class="olex__item">A</div>
-  <div class="olex__item">B</div>
-  <div class="olex__item">C</div>
-</div>
-```
-*/
-.olex.-reverse {
-  direction: rtl;
-
-  > .olex__item {
-    direction: ltr;
-  }
-}
-
+  Direction
+--------------------------------- */
 /*
-## 水平方向の位置揃え
-
-```html
-<div class="olex -center">
-  <div class="olex__item">A</div>
-  <div class="olex__item">B</div>
-  <div class="olex__item">C</div>
-</div>
-```
+  <div class="olex" data-dir="reverse">
+    <div class="olex__item">A</div>
+    <div class="olex__item">B</div>
+    <div class="olex__item">C</div>
+  </div>
 */
-.olex {
-  &.-left {
-    text-align: left;
-  }
-  &.-center {
-    text-align: center;
-  }
-  &.-right {
-    text-align: right;
-  }
-  &.-justify {
-    display: block;
-    text-align: justify;
-    text-justify: distribute-all-lines;
-
-    &:after {
-      display: inline-block;
-      width: 100%;
-      content: '';
-    }
-  }
-}
-
-/*
-## 垂直方向の位置揃え
-
-```html
-<div class="olex -middle">
-  <div class="olex__item">A</div>
-  <div class="olex__item">B</div>
-  <div class="olex__item">C</div>
-</div>
-```
-*/
-.olex {
-  &.-top {
-    > .olex__item {
-      vertical-align: top;
-    }
-  }
-
-  &.-middle {
-    > .olex__item {
-      vertical-align: middle;
-    }
-  }
-
-  &.-bottom {
-    > .olex__item {
-      vertical-align: bottom;
-    }
-  }
-}
-
-/*
-## アイテムの水平方向の位置揃え
-
-```html
-<div class="olex ">
-  <div class="olex__item">A</div>
-  <div class="olex__item">B</div>
-  <div class="olex__item">C</div>
-</div>
-```
-*/
-.olex__item {
-  &.-left {
-    text-align: left;
-  }
-  &.-center {
-    text-align: center;
-  }
-  &.-right {
-    text-align: right;
-  }
-}
-
-/*
-## グリッドシステム
-
-```html
-<div class="olex -grid -gutter">
-  <div class="olex__item -sp-6 -tab-4 -lap-3">A</div>
-  <div class="olex__item -sp-6 -tab-4 -lap-3">B</div>
-  <div class="olex__item -tab-4 -lap-6 -desk-12">C</div>
-</div>
-```
-*/
-
-$column: 12; // カラム数
-$gutter-sp: 8px; // スマホ時の間隔
-$gutter-tab: 16px; // タブレット時の間隔
-$gutter-lap: 24px; // ラップトップ時の間隔
-$gutter-desk: 24px; // デスクトップ時の間隔
 
 .olex {
-  &.-grid {
-    &.-gutter {
-      display: block;
-      margin: -($gutter-sp / 2);
-      width: auto;
+  &[data-dir="normal"] {
+    flex-direction: row;
+  }
+  &[data-dir="reverse"] {
+    flex-direction: row-reverse;
+  }
+}
 
-      > .olex__item {
-        border: ($gutter-sp / 2) solid transparent;
-        background-clip: padding-box;
+/*
+  Alignment
+--------------------------------- */
+/*
+  <div class="olex" data-align="center">
+    <div class="olex__item">A</div>
+    <div class="olex__item">B</div>
+    <div class="olex__item" data-align="end middle">C</div>
+  </div>
+*/
+
+.olex {
+  &[data-align~="start"] {
+    justify-content: flex-start;
+  }
+
+  &[data-align~="center"] {
+    justify-content: center;
+  }
+
+  &[data-align~="end"] {
+    justify-content: flex-end;
+  }
+
+  &[data-align~="justify"] {
+    justify-content: space-between;
+  }
+
+  &[data-align~="top"] {
+    align-items: flex-start;
+  }
+
+  &[data-align~="middle"] {
+    align-items: center;
+  }
+
+  &[data-align~="bottom"] {
+    align-items: flex-end;
+  }
+
+  &__item {
+    &[data-align~="start"] {
+      align-items: flex-start;
+    }
+
+    &[data-align~="center"] {
+      align-items: center;
+    }
+
+    &[data-align~="end"] {
+      align-items: flex-end;
+    }
+
+    &[data-align~="top"] {
+      justify-content: flex-start;
+    }
+
+    &[data-align~="middle"] {
+      justify-content: center;
+    }
+
+    &[data-align~="bottom"] {
+      justify-content: flex-end;
+    }
+  }
+}
+
+/*
+  Grid
+--------------------------------- */
+/*
+  <div class="olex" data-gutter="normal">
+    <div class="olex__item" data-grid="sp12 tab4 lap6">A</div>
+    <div class="olex__item" data-grid="sp6 tab4 lap3">B</div>
+    <div class="olex__item" data-grid="sp6 tab4 lap3">C</div>
+  </div>
+*/
+.olex {
+  &[data-gutter] {
+    width: auto;
+
+    & > .olex__item {
+      border: solid transparent;
+      background-clip: padding-box;
+    }
+  }
+
+  &[data-gutter="small"] {
+    margin: -($gutter-minsp / 2);
+
+    & > .olex__item {
+      border-width: ($gutter-minsp / 2);
+    }
+  }
+
+  &[data-gutter="normal"] {
+    margin: -($gutter-sp / 2);
+
+    & > .olex__item {
+      border-width: ($gutter-sp / 2);
+    }
+  }
+
+  &[data-gutter="large"] {
+    margin: -($gutter-tab);
+
+    & > .olex__item {
+      border-width: ($gutter-tab);
+    }
+  }
+
+  &[data-gutter="spNone"] {
+    margin: 0;
+    & > .olex__item {
+      border-width: 0;
+    }
+  }
+
+  &__item {
+    @for $i from 1 through $column {
+      &[data-grid~="sp#{$i}"] {
+        width: percentage($i / $column);
       }
     }
 
-    > .olex__item {
-      width: 100%;
-
-      @for $i from 1 through $column {
-        &.-sp-#{$i} {
-          width: percentage($i / $column);
-        }
-      }
-
-      &.-sp-five {
-        width: 20%;
-      }
+    &[data-grid~="spFive"] {
+      width: 20%;
     }
   }
 }
 
 @media screen and (min-width: 768px) {
-  .olex.-grid {
-    &.-gutter {
+  .olex {
+    &[data-gutter="small"] {
+      margin: -($gutter-minsp / 2);
+
+      & > .olex__item {
+        border-width: ($gutter-minsp / 2);
+      }
+    }
+
+    &[data-gutter="normal"] {
       margin: -($gutter-tab / 2);
 
-      > .olex__item {
+      & > .olex__item {
         border-width: ($gutter-tab / 2);
       }
     }
 
-    > .olex__item {
-     @for $i from 1 through $column {
-        &.-tab-#{$i} {
+    &[data-gutter="large"] {
+      margin: -($gutter-tab);
+
+      & > .olex__item {
+        border-width: ($gutter-tab);
+      }
+    }
+
+    &__item {
+      @for $i from 1 through $column {
+        &[data-grid~="tab#{$i}"] {
           width: percentage($i / $column);
         }
       }
 
-      &.-tab-five {
+      &[data-grid~="tabFive"] {
         width: 20%;
+      }
+
+      &[data-grid~="tabAuto"] {
+        width: auto;
       }
     }
   }
 }
 
 @media screen and (min-width: 1024px) {
-  .olex.-grid {
-    &.-gutter {
+  .olex {
+    &[data-gutter="small"] {
+      margin: -($gutter-sp / 2);
+
+      & > .olex__item {
+        border-width: ($gutter-sp / 2);
+      }
+    }
+
+    &[data-gutter="normal"] {
       margin: -($gutter-lap / 2);
 
-      > .olex__item {
+      & > .olex__item {
         border-width: ($gutter-lap / 2);
       }
     }
 
-    > .olex__item {
-     @for $i from 1 through $column {
-        &.-lap-#{$i} {
+    &[data-gutter="large"] {
+      margin: -($gutter-lap);
+
+      & > .olex__item {
+        border-width: ($gutter-lap);
+      }
+    }
+
+    &__item {
+      @for $i from 1 through $column {
+        &[data-grid~="lap#{$i}"] {
           width: percentage($i / $column);
         }
       }
 
-      &.-lap-five {
+      &[data-grid~="lapFive"] {
         width: 20%;
+      }
+
+      &[data-grid~="lapAuto"] {
+        width: auto;
       }
     }
   }
 }
 
-@media screen and (min-width: 1280px) {
-  .olex.-grid {
-    &.-gutter {
+@media screen and (min-width: 1200px) {
+  .olex {
+    &[data-gutter="small"] {
+      margin: -($gutter-sp / 2);
+
+      & > .olex__item {
+        border-width: ($gutter-sp / 2);
+      }
+    }
+    &[data-gutter="normal"] {
       margin: -($gutter-desk / 2);
 
-      > .olex__item {
+      & > .olex__item {
         border-width: ($gutter-desk / 2);
       }
     }
 
-    > .olex__item {
-     @for $i from 1 through $column {
-        &.-desk-#{$i} {
+    &[data-gutter="large"] {
+      margin: -($gutter-desk);
+
+      & > .olex__item {
+        border-width: ($gutter-desk);
+      }
+    }
+
+    &__item {
+      @for $i from 1 through $column {
+        &[data-grid~="desk#{$i}"] {
           width: percentage($i / $column);
         }
       }
 
-      &.-desk-five {
+      &[data-grid~="deskFive"] {
         width: 20%;
+      }
+
+      &[data-grid~="deskAuto"] {
+        width: auto;
       }
     }
   }

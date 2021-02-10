@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Olex - Ore no Flexible CSS Grid System</title>
+    <link rel="stylesheet" href="../olex.min.css" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        background-color: #eceff1;
+      }
+
+      .l-spacer {
+        width: 90%;
+        margin: 6rem auto;
+      }
+
+      .page-title {
+        margin: 1em 0;
+        text-align: center;
+      }
+
+      h2,
+      h3 {
+        margin: 1em 0;
+      }
+
+      p,
+      span {
+        display: block;
+        padding: 1em;
+        background-color: #26c6da;
+        color: #fff;
+      }
+
+      .small {
+        padding: 0.5rem 1rem;
+      }
+      .large {
+        padding: 2rem 1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="l-spacer">
+      <h1 class="page-title">Olex</h1>
+    </div>
+    <!-- /.l-spacer -->
+
+    <div class="l-spacer">
+      <h2>Basic</h2>
+
+      <div class="olex">
+        <div class="olex__item"><span>Box1</span></div>
+        <div class="olex__item"><span>Box2</span></div>
+        <div class="olex__item"><span>Box3</span></div>
+        <div class="olex__item"><span>Box4</span></div>
+      </div>
+    </div>
+    <!-- /.l-spacer -->
+
+    <div class="l-spacer">
+      <h2>Direction</h2>
+
+      <h3>Normal</h3>
+      <div class="olex" data-dir="normal">
+        <div class="olex__item"><span>Box1</span></div>
+        <div class="olex__item"><span>Box2</span></div>
+        <div class="olex__item"><span>Box3</span></div>
+        <div class="olex__item"><span>Box4</span></div>
+      </div>
+      <h3>Reverse</h3>
+      <div class="olex" data-dir="reverse">
+        <div class="olex__item"><span>Box1</span></div>
+        <div class="olex__item"><span>Box2</span></div>
+        <div class="olex__item"><span>Box3</span></div>
+        <div class="olex__item"><span>Box4</span></div>
+      </div>
+    </div>
+    <!-- /.l-spacer -->
+
+    <div class="l-spacer">
+      <h2>Alignment</h2>
+
+      <h3>center Middle</h3>
+      <div class="olex" data-align="center middle">
+        <div class="olex__item"><span>Box1</span></div>
+        <div class="olex__item"><span class="large">Box2</span></div>
+        <div class="olex__item"><span>Box3</span></div>
+        <div class="olex__item"><span class="small">Box4</span></div>
+      </div>
+
+      <h3>end bottom</h3>
+      <div class="olex">
+        <div class="olex__item"><span>Box1</span></div>
+        <div class="olex__item"><span class="large">Box2</span></div>
+        <div class="olex__item"><span>Box3</span></div>
+        <div class="olex__item" data-align="end bottom"><span class="small">Box4</span></div>
+      </div>
+    </div>
+    <!-- /.l-spacer -->
+    <div class="l-spacer">
+      <h2>Grid</h2>
+
+      <div class="olex">
+        <div class="olex__item" data-grid="sp6"><span>Box1</span></div>
+        <div class="olex__item" data-grid="sp6"><span>Box2</span></div>
+        <div class="olex__item" data-grid="sp4"><span>Box3</span></div>
+        <div class="olex__item" data-grid="sp4"><span>Box4</span></div>
+        <div class="olex__item" data-grid="sp4"><span>Box5</span></div>
+        <div class="olex__item" data-grid="sp3"><span>Box6</span></div>
+        <div class="olex__item" data-grid="sp3"><span>Box7</span></div>
+        <div class="olex__item" data-grid="sp3"><span>Box8</span></div>
+        <div class="olex__item" data-grid="sp3"><span>Box9</span></div>
+      </div>
+
+      <h3>end bottom</h3>
+      <div class="olex" data-gutter="normal">
+        <div class="olex__item" data-grid="sp6"><span>Box1</span></div>
+        <div class="olex__item" data-grid="sp6"><span>Box2</span></div>
+        <div class="olex__item" data-grid="sp4"><span>Box3</span></div>
+        <div class="olex__item" data-grid="sp4"><span>Box4</span></div>
+        <div class="olex__item" data-grid="sp4"><span>Box5</span></div>
+        <div class="olex__item" data-grid="sp3"><span>Box6</span></div>
+        <div class="olex__item" data-grid="sp3"><span>Box7</span></div>
+        <div class="olex__item" data-grid="sp3"><span>Box8</span></div>
+        <div class="olex__item" data-grid="sp3"><span>Box9</span></div>
+      </div>
+    </div>
+    <!-- /.l-spacer -->
+  </body>
+</html>
