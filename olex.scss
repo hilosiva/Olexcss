@@ -157,12 +157,12 @@ $breakpoints: (
     }
   }
 
-  @each $key, $val in $gutters {
-    &[data-gutter="#{$key}"] {
-      margin: -($val / 2);
+  @each $size, $val in $gutters {
+    &[data-gutter="#{$size}"] {
+      margin: -($val * 2.5 / 2);
 
       & > .olex__item {
-        border-width: ($val / 2);
+        border-width: ($val * 2.5 / 2);
       }
     }
   }
@@ -180,21 +180,33 @@ $breakpoints: (
   }
 }
 
-@each $key, $val in $breakpoints {
-  @media screen and (min-width: $val) {
+@each $device, $breakpoint in $breakpoints {
+  @media screen and (min-width: $breakpoint) {
     .olex {
+      @if $device == "tab" {
+        @each $size, $val in $gutters {
+          &[data-gutter="#{$size}"] {
+            margin: -($val / 2);
+
+            & > .olex__item {
+              border-width: ($val / 2);
+            }
+          }
+        }
+      }
+
       &__item {
         @for $i from 1 through $column {
-          &[data-grid~="#{$key + $i}"] {
+          &[data-grid~="#{$device + $i}"] {
             width: percentage($i / $column);
           }
         }
 
-        &[data-grid~="#{$key}Five"] {
+        &[data-grid~="#{$device}Five"] {
           width: 20%;
         }
 
-        &[data-grid~="#{$key}Auto"] {
+        &[data-grid~="#{$device}Auto"] {
           width: auto;
         }
       }
