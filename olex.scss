@@ -125,14 +125,17 @@ $breakpoints: (
 
     &[data-align~="top"] {
       justify-content: flex-start;
+      align-self: stretch;
     }
 
     &[data-align~="middle"] {
       justify-content: center;
+      align-self: stretch;
     }
 
     &[data-align~="bottom"] {
       justify-content: flex-end;
+      align-self: stretch;
     }
   }
 }
