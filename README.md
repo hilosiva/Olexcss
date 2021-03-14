@@ -47,30 +47,33 @@ Olex Item に `data-grid `属性を使ってデバイスのプレフィクスと
 
 | プレフィックス | 適用画面サイズ |
 | -------------- | -------------- |
-| `sp`           | 1px ~          |
-| `tab`          | 768px ~        |
-| `lap`          | 1024px ~       |
-| `desk`         | 1200px ~       |
+| `xxs`          | 0px ~          |
+| `xs`           | 360px ~        |
+| `sm`           | 576px ~        |
+| `md`           | 768px ~        |
+| `lg`           | 992px ~        |
+| `xl`           | 1200px ~       |
+| `xxl`          | 1400px ~       |
 
-メディアクエリを `min-width` しか使ってないので、`sp`というプレフィックスはスマホだけじゃなくスマホ以上全てに適用されて、同様に`tab` は、タブレット以上全てに適用されるような仕様になってます。
+メディアクエリを `min-width` しか使ってないので、`xxs`というプレフィックスはスマホだけじゃなく、横幅 `0px` 以上のブラウザ全てに適用されて、同様に`md` は、横幅 `768px` 以上のブラウザ全てに適用されるような仕様になってます。
 
 で、例えばどの画面幅でもピッタリ半分半分の 2 段組みにしたかったら、12 分割のグリッドシステムなので、1 段につき 6 グリッド（列）ずつ使えばちょうど半分になるわけです。（12 分割 ÷ 2 段 = 6 グリッド）
 
-つまり`data-grid`属性に `sp6`と指定すると、どのデバイスでも 2 つのボックスをちょうど半分ずつにわけることができます。
+つまり`data-grid`属性に `xxs6`と指定すると、どのデバイスでも 2 つのボックスをちょうど半分ずつにわけることができます。
 
 このように１行の合計が 12 グリッドになるように調整するように、グリッド数を指定すれば OK です。
 
-なので、3 段組みにしたければ、`sp4` を 3 つ並べればいいですし、4 段組みにしたければ、`sp3` を 4 つ並べれば OK です。`sp8` と `sp4` などの組み合わせで 12 グリッドを使っても大丈夫です。
+なので、3 段組みにしたければ、`xxs4` を 3 つ並べればいいですし、4 段組みにしたければ、`xxs3` を 4 つ並べれば OK です。`xxs8` と `xxs4` などの組み合わせで 12 グリッドを使っても大丈夫です。
 
-![olex-grid – 4@2x](https://user-images.githubusercontent.com/46587015/107589704-ed9f8900-6c49-11eb-8311-cf1dbbdec5ff.png)
+![olex-grid – 4@2x](https://user-images.githubusercontent.com/46587015/111059594-272e1300-84da-11eb-9823-a0c2ea3da07a.png)
 
 あとは各デバイス（ブレークポイント）ごとで必要なグリッド数（列数）が異なる場合は、各ブレークポイントごとのプレフィックスとグリッド数（列数）を半角スペース区切りで指定すれば自由にレイアウト可能です。
 
 ```html
 <div class="olex">
-  <div class="olex__item" data-grid="sp12 tab4 lap6">A</div>
-  <div class="olex__item" data-grid="sp6 tab4 lap3">B</div>
-  <div class="olex__item" data-grid="sp6 tab4 lap3">C</div>
+  <div class="olex__item" data-grid="xxs12 md4 lg6">A</div>
+  <div class="olex__item" data-grid="xxs6 md4 lg3">B</div>
+  <div class="olex__item" data-grid="xxs6 md4 lg3">C</div>
 </div>
 ```
 
@@ -82,17 +85,17 @@ Olex Item 間にスペースを設ける場合は、Olex Container に`data-gutt
 
 ブレイクポイントごとに切り替えたい場合は、カスタマイズしてください。
 
-| サイズ   | スペースサイズ                       |
-| -------- | ------------------------------------ |
-| `small`  | スマホ: 2.5vw / タブレット以上： 1vw |
-| `normal` | スマホ: 5vw / タブレット以上： 2vw   |
-| `large`  | スマホ: 7.5vw / タブレット以上： 3vw |
+| サイズ   | スペースサイズ                                                 |
+| -------- | -------------------------------------------------------------- |
+| `small`  | スマホ: 2.5vw /<br> タブレット以上： 1.5vw / <br>PC 以上： 1vw |
+| `normal` | スマホ: 5vw /<br> タブレット以上： 3vw /<br> PC 以上： 2vw     |
+| `large`  | スマホ: 7.5vw /<br> タブレット以上： 4.5vw /<br> PC 以上： 3vw |
 
 ```html
 <div class="olex" data-gutter="normal">
-  <div class="olex__item" data-grid="sp12 tab4 lap6">A</div>
-  <div class="olex__item" data-grid="sp6 tab4 lap3">B</div>
-  <div class="olex__item" data-grid="sp6 tab4 lap3">C</div>
+  <div class="olex__item" data-grid="xxs12 md4 lg6">A</div>
+  <div class="olex__item" data-grid="xxs6 md4 lg3">B</div>
+  <div class="olex__item" data-grid="xxs6 md4 lg3">C</div>
 </div>
 ```
 
