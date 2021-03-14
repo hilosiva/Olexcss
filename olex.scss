@@ -1,5 +1,5 @@
 @charset 'UTF-8';
-/*! olex v2.0.0| MIT License | https://github.com/hilosiva/olexcss */
+/*! olex v2.1.0| MIT License | https://github.com/hilosiva/olexcss */
 
 /* ============================================
   Olex - Ore no Flexible CSS Grid System
@@ -13,16 +13,20 @@ $column: 12;
 
 // Gutter Size
 $gutters: (
-  "small": 1vw,
-  "normal": 2vw,
-  "large": 3vw,
+  small: 1vw,
+  normal: 2vw,
+  large: 3vw,
 ) !default;
 
 // Breakpoints
 $breakpoints: (
-  "tab": 768px,
-  "lap": 1024px,
-  "desk": 1200px,
+  xxs: 0,
+  xs: 360px,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px,
 ) !default;
 
 /*
@@ -160,40 +164,23 @@ $breakpoints: (
     }
   }
 
-  @each $size, $val in $gutters {
-    &[data-gutter="#{$size}"] {
-      margin: -($val * 2.5 / 2);
+  @each $device, $breakpoint in $breakpoints {
+    @media screen and (min-width: $breakpoint) {
+      $raio: 2.5;
 
-      & > .olex__item {
-        border-width: ($val * 2.5 / 2);
+      @if $breakpoint >= 768 {
+        $raio: 1.5;
       }
-    }
-  }
-
-  &__item {
-    @for $i from 1 through $column {
-      &[data-grid~="sp#{$i}"] {
-        width: percentage($i / $column);
+      @if $breakpoint >= 1024 {
+        $raio: 1;
       }
-    }
 
-    &[data-grid~="spFive"] {
-      width: 20%;
-    }
-  }
-}
+      @each $size, $val in $gutters {
+        &[data-gutter="#{$size}"] {
+          margin: -($val * $raio / 2);
 
-@each $device, $breakpoint in $breakpoints {
-  @media screen and (min-width: $breakpoint) {
-    .olex {
-      @if $device == "tab" {
-        @each $size, $val in $gutters {
-          &[data-gutter="#{$size}"] {
-            margin: -($val / 2);
-
-            & > .olex__item {
-              border-width: ($val / 2);
-            }
+          & > .c-grid__item {
+            border-width: ($val * $raio / 2);
           }
         }
       }
