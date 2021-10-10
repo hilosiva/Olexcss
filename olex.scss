@@ -155,10 +155,11 @@ $breakpoints: (
   </div>
 */
 .olex {
+  $this: &;
   &[data-gutter] {
     width: auto;
 
-    & > .olex__item {
+    & > #{$this}__item {
       border: solid transparent;
       background-clip: padding-box;
     }
@@ -166,21 +167,21 @@ $breakpoints: (
 
   @each $device, $breakpoint in $breakpoints {
     @media screen and (min-width: $breakpoint) {
-      $raio: 2.5;
+      $ratio: 2.5;
 
       @if $breakpoint >= 768 {
-        $raio: 1.5;
+        $ratio: 1.5;
       }
       @if $breakpoint >= 1024 {
-        $raio: 1;
+        $ratio: 1;
       }
 
       @each $size, $val in $gutters {
         &[data-gutter="#{$size}"] {
-          margin: -($val * $raio / 2);
+          margin: -($val * $ratio / 2);
 
-          & > .c-grid__item {
-            border-width: ($val * $raio / 2);
+          & > #{$this}__item {
+            border-width: ($val * $ratio / 2);
           }
         }
       }

@@ -182,19 +182,19 @@
   .olex[data-gutter="small"] {
     margin: -1.25vw;
   }
-  .olex[data-gutter="small"] > .c-grid__item {
+  .olex[data-gutter="small"] > .olex__item {
     border-width: 1.25vw;
   }
   .olex[data-gutter="normal"] {
     margin: -2.5vw;
   }
-  .olex[data-gutter="normal"] > .c-grid__item {
+  .olex[data-gutter="normal"] > .olex__item {
     border-width: 2.5vw;
   }
   .olex[data-gutter="large"] {
     margin: -3.75vw;
   }
-  .olex[data-gutter="large"] > .c-grid__item {
+  .olex[data-gutter="large"] > .olex__item {
     border-width: 3.75vw;
   }
   .olex__item[data-grid~="xxs1"] {
@@ -245,19 +245,19 @@
   .olex[data-gutter="small"] {
     margin: -1.25vw;
   }
-  .olex[data-gutter="small"] > .c-grid__item {
+  .olex[data-gutter="small"] > .olex__item {
     border-width: 1.25vw;
   }
   .olex[data-gutter="normal"] {
     margin: -2.5vw;
   }
-  .olex[data-gutter="normal"] > .c-grid__item {
+  .olex[data-gutter="normal"] > .olex__item {
     border-width: 2.5vw;
   }
   .olex[data-gutter="large"] {
     margin: -3.75vw;
   }
-  .olex[data-gutter="large"] > .c-grid__item {
+  .olex[data-gutter="large"] > .olex__item {
     border-width: 3.75vw;
   }
   .olex__item[data-grid~="xs1"] {
@@ -308,19 +308,19 @@
   .olex[data-gutter="small"] {
     margin: -1.25vw;
   }
-  .olex[data-gutter="small"] > .c-grid__item {
+  .olex[data-gutter="small"] > .olex__item {
     border-width: 1.25vw;
   }
   .olex[data-gutter="normal"] {
     margin: -2.5vw;
   }
-  .olex[data-gutter="normal"] > .c-grid__item {
+  .olex[data-gutter="normal"] > .olex__item {
     border-width: 2.5vw;
   }
   .olex[data-gutter="large"] {
     margin: -3.75vw;
   }
-  .olex[data-gutter="large"] > .c-grid__item {
+  .olex[data-gutter="large"] > .olex__item {
     border-width: 3.75vw;
   }
   .olex__item[data-grid~="sm1"] {
@@ -371,19 +371,19 @@
   .olex[data-gutter="small"] {
     margin: -0.75vw;
   }
-  .olex[data-gutter="small"] > .c-grid__item {
+  .olex[data-gutter="small"] > .olex__item {
     border-width: 0.75vw;
   }
   .olex[data-gutter="normal"] {
     margin: -1.5vw;
   }
-  .olex[data-gutter="normal"] > .c-grid__item {
+  .olex[data-gutter="normal"] > .olex__item {
     border-width: 1.5vw;
   }
   .olex[data-gutter="large"] {
     margin: -2.25vw;
   }
-  .olex[data-gutter="large"] > .c-grid__item {
+  .olex[data-gutter="large"] > .olex__item {
     border-width: 2.25vw;
   }
   .olex__item[data-grid~="md1"] {
@@ -434,19 +434,19 @@
   .olex[data-gutter="small"] {
     margin: -0.75vw;
   }
-  .olex[data-gutter="small"] > .c-grid__item {
+  .olex[data-gutter="small"] > .olex__item {
     border-width: 0.75vw;
   }
   .olex[data-gutter="normal"] {
     margin: -1.5vw;
   }
-  .olex[data-gutter="normal"] > .c-grid__item {
+  .olex[data-gutter="normal"] > .olex__item {
     border-width: 1.5vw;
   }
   .olex[data-gutter="large"] {
     margin: -2.25vw;
   }
-  .olex[data-gutter="large"] > .c-grid__item {
+  .olex[data-gutter="large"] > .olex__item {
     border-width: 2.25vw;
   }
   .olex__item[data-grid~="lg1"] {
@@ -497,19 +497,19 @@
   .olex[data-gutter="small"] {
     margin: -0.5vw;
   }
-  .olex[data-gutter="small"] > .c-grid__item {
+  .olex[data-gutter="small"] > .olex__item {
     border-width: 0.5vw;
   }
   .olex[data-gutter="normal"] {
     margin: -1vw;
   }
-  .olex[data-gutter="normal"] > .c-grid__item {
+  .olex[data-gutter="normal"] > .olex__item {
     border-width: 1vw;
   }
   .olex[data-gutter="large"] {
     margin: -1.5vw;
   }
-  .olex[data-gutter="large"] > .c-grid__item {
+  .olex[data-gutter="large"] > .olex__item {
     border-width: 1.5vw;
   }
   .olex__item[data-grid~="xl1"] {
@@ -560,19 +560,19 @@
   .olex[data-gutter="small"] {
     margin: -0.5vw;
   }
-  .olex[data-gutter="small"] > .c-grid__item {
+  .olex[data-gutter="small"] > .olex__item {
     border-width: 0.5vw;
   }
   .olex[data-gutter="normal"] {
     margin: -1vw;
   }
-  .olex[data-gutter="normal"] > .c-grid__item {
+  .olex[data-gutter="normal"] > .olex__item {
     border-width: 1vw;
   }
   .olex[data-gutter="large"] {
     margin: -1.5vw;
   }
-  .olex[data-gutter="large"] > .c-grid__item {
+  .olex[data-gutter="large"] > .olex__item {
     border-width: 1.5vw;
   }
   .olex__item[data-grid~="xxl1"] {
