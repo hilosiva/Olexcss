@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Olex - Ore no Flexible CSS Grid System</title>
-    <link rel="stylesheet" href="../olex.min.css" />
+    <link rel="stylesheet" href="../css/olex.css" />
     <style>
       * {
         margin: 0;
@@ -69,14 +69,14 @@
       <h2>Direction</h2>
 
       <h3>Normal</h3>
-      <div class="olex" data-dir="normal">
+      <div class="olex" data-dir="xxs:normal">
         <div class="olex__item"><span>Box1</span></div>
         <div class="olex__item"><span>Box2</span></div>
         <div class="olex__item"><span>Box3</span></div>
         <div class="olex__item"><span>Box4</span></div>
       </div>
       <h3>Reverse</h3>
-      <div class="olex" data-dir="reverse">
+      <div class="olex" data-dir="xxs:reverse">
         <div class="olex__item"><span>Box1</span></div>
         <div class="olex__item"><span>Box2</span></div>
         <div class="olex__item"><span>Box3</span></div>
@@ -89,7 +89,7 @@
       <h2>Alignment</h2>
 
       <h3>center Middle</h3>
-      <div class="olex" data-align="center middle">
+      <div class="olex" data-align="xxs:center xxs:middle">
         <div class="olex__item"><span>Box1</span></div>
         <div class="olex__item"><span class="large">Box2</span></div>
         <div class="olex__item"><span>Box3</span></div>
@@ -101,7 +101,7 @@
         <div class="olex__item"><span>Box1</span></div>
         <div class="olex__item"><span class="large">Box2</span></div>
         <div class="olex__item"><span>Box3</span></div>
-        <div class="olex__item" data-align="end bottom"><span class="small">Box4</span></div>
+        <div class="olex__item" data-align="xxs:end xxs:bottom"><span class="small">Box4</span></div>
       </div>
     </div>
     <!-- /.l-spacer -->
@@ -109,28 +109,70 @@
       <h2>Grid</h2>
 
       <div class="olex">
-        <div class="olex__item" data-grid="xxs6"><span>Box1</span></div>
-        <div class="olex__item" data-grid="xxs6"><span>Box2</span></div>
-        <div class="olex__item" data-grid="xxs4"><span>Box3</span></div>
-        <div class="olex__item" data-grid="xxs4"><span>Box4</span></div>
-        <div class="olex__item" data-grid="xxs4"><span>Box5</span></div>
-        <div class="olex__item" data-grid="xxs3"><span>Box6</span></div>
-        <div class="olex__item" data-grid="xxs3"><span>Box7</span></div>
-        <div class="olex__item" data-grid="xxs3"><span>Box8</span></div>
-        <div class="olex__item" data-grid="xxs3"><span>Box9</span></div>
+        <div class="olex__item" data-cols="xxs:6"><span>Box1</span></div>
+        <div class="olex__item" data-cols="xxs:6"><span>Box2</span></div>
+        <div class="olex__item" data-cols="xxs:4"><span>Box3</span></div>
+        <div class="olex__item" data-cols="xxs:4"><span>Box4</span></div>
+        <div class="olex__item" data-cols="xxs:4"><span>Box5</span></div>
+        <div class="olex__item" data-cols="xxs:3"><span>Box6</span></div>
+        <div class="olex__item" data-cols="xxs:3"><span>Box7</span></div>
+        <div class="olex__item" data-cols="xxs:3"><span>Box8</span></div>
+        <div class="olex__item" data-cols="xxs:3"><span>Box9</span></div>
       </div>
 
       <h3>end bottom</h3>
-      <div class="olex" data-gutter="normal">
-        <div class="olex__item" data-grid="xxs6"><span>Box1</span></div>
-        <div class="olex__item" data-grid="xxs6"><span>Box2</span></div>
-        <div class="olex__item" data-grid="xxs4"><span>Box3</span></div>
-        <div class="olex__item" data-grid="xxs4"><span>Box4</span></div>
-        <div class="olex__item" data-grid="xxs4"><span>Box5</span></div>
-        <div class="olex__item" data-grid="xxs3"><span>Box6</span></div>
-        <div class="olex__item" data-grid="xxs3"><span>Box7</span></div>
-        <div class="olex__item" data-grid="xxs3"><span>Box8</span></div>
-        <div class="olex__item" data-grid="xxs3"><span>Box9</span></div>
+      <div class="olex" data-gutter="min:xxsmall lg:medium">
+        <div class="olex__item" data-cols="xxs:6"><span>Box1</span></div>
+        <div class="olex__item" data-cols="xxs:6"><span>Box2</span></div>
+        <div class="olex__item" data-cols="xxs:4"><span>Box3</span></div>
+        <div class="olex__item" data-cols="xxs:4"><span>Box4</span></div>
+        <div class="olex__item" data-cols="xxs:4"><span>Box5</span></div>
+        <div class="olex__item" data-cols="xxs:3"><span>Box6</span></div>
+        <div class="olex__item" data-cols="xxs:3"><span>Box7</span></div>
+        <div class="olex__item" data-cols="xxs:3"><span>Box8</span></div>
+        <div class="olex__item" data-cols="xxs:3"><span>Box9</span></div>
+      </div>
+
+      <h3>Over</h3>
+      <div class="olex" data-gutter="min:xxsmall xs:xxsmall lg:xxsmall xl:xxsmall">
+        <div class="olex__item" data-cols="xxs:8" data-over="xxs:left md:">
+          <span>Box1</span>
+          <div class="olex__fit">
+            <span>Fit</span>
+          </div>
+        </div>
+        <div class="olex__item" data-cols="xxs:4">
+          <div><span>Box2</span></div>
+        </div>
+        <div class="olex__item" data-cols="xxs:4" data-over="xxs:left">
+          <span>Box3</span>
+          <div class="olex__fit">
+            <span>Fit</span>
+          </div>
+        </div>
+        <div class="olex__item" data-cols="xxs:8" data-over="lg:right xxl:clearRight">
+          <div><span>Box4</span></div>
+        </div>
+        <div class="olex__item" data-cols="xxs:12" data-over="xxs:left xxs:right lg:clearRight">
+          <div>
+            <span>Box5</span>
+            <div class="olex__fit">
+              <span>Fit</span>
+            </div>
+          </div>
+        </div>
+        <div class="olex__item" data-cols="xxs:3">
+          <div><span>Box6</span></div>
+        </div>
+        <div class="olex__item" data-cols="xxs:3">
+          <div><span>Box7</span></div>
+        </div>
+        <div class="olex__item" data-cols="xxs:3">
+          <div><span>Box8</span></div>
+        </div>
+        <div class="olex__item" data-cols="xxs:3">
+          <div><span>Box9</span></div>
+        </div>
       </div>
     </div>
     <!-- /.l-spacer -->

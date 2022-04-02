@@ -1,5 +1,6 @@
 @charset 'UTF-8';
-/*! olex v2.1.0| MIT License | https://github.com/hilosiva/olexcss */
+@use "sass:math";
+/*! olex v3.0.0| MIT License | https://github.com/hilosiva/olexcss */
 
 /* ============================================
   Olex - Ore no Flexible CSS Grid System
@@ -11,17 +12,30 @@
 // Grid Column
 $column: 12;
 
+$scroll-bar: 8px;
+
+// Design Width Size
+$sm-design-width: 375px;
+$md-design-width: 768px;
+$lg-design-width: 1280px;
+
 // Gutter Size
 $gutters: (
-  small: 1vw,
-  normal: 2vw,
-  large: 3vw,
+  xxsmall: 16px,
+  xsmall: 32px,
+  small: 48px,
+  medium: 64px,
+  large: 88px,
+  xlarge: 136px,
+  xxlarge: 160px,
+  xxxlarge: 260px,
 ) !default;
 
 // Breakpoints
 $breakpoints: (
-  xxs: 0,
-  xs: 360px,
+  min: 0,
+  xxs: 360px,
+  xs: 414px,
   sm: 576px,
   md: 768px,
   lg: 992px,
@@ -58,7 +72,7 @@ $breakpoints: (
   Direction
 --------------------------------- */
 /*
-  <div class="olex" data-dir="reverse">
+  <div class="olex" data-dir="xxs:reverse">
     <div class="olex__item">A</div>
     <div class="olex__item">B</div>
     <div class="olex__item">C</div>
@@ -66,11 +80,15 @@ $breakpoints: (
 */
 
 .olex {
-  &[data-dir="normal"] {
-    flex-direction: row;
-  }
-  &[data-dir="reverse"] {
-    flex-direction: row-reverse;
+  @each $device, $breakpoint in $breakpoints {
+    @media screen and (min-width: $breakpoint) {
+      &[data-dir="#{$device}:normal"] {
+        flex-direction: row;
+      }
+      &[data-dir="#{$device}:reverse"] {
+        flex-direction: row-reverse;
+      }
+    }
   }
 }
 
@@ -78,68 +96,73 @@ $breakpoints: (
   Alignment
 --------------------------------- */
 /*
-  <div class="olex" data-align="center">
+  <div class="olex" data-align="xxs:center">
     <div class="olex__item">A</div>
     <div class="olex__item">B</div>
-    <div class="olex__item" data-align="end middle">C</div>
+    <div class="olex__item" data-align="xxs:end middle">C</div>
   </div>
 */
 
 .olex {
-  &[data-align~="start"] {
-    justify-content: flex-start;
-  }
+  @each $device, $breakpoint in $breakpoints {
+    @media screen and (min-width: $breakpoint) {
+      &[data-align~="#{$device}:start"] {
+        justify-content: flex-start;
+      }
 
-  &[data-align~="center"] {
-    justify-content: center;
-  }
+      &[data-align~="#{$device}:center"] {
+        justify-content: center;
+      }
 
-  &[data-align~="end"] {
-    justify-content: flex-end;
-  }
+      &[data-align~="#{$device}:end"] {
+        justify-content: flex-end;
+      }
 
-  &[data-align~="justify"] {
-    justify-content: space-between;
-  }
+      &[data-align~="#{$device}:justify"] {
+        justify-content: space-between;
+      }
 
-  &[data-align~="top"] {
-    align-items: flex-start;
-  }
+      &[data-align~="#{$device}:top"] {
+        align-items: flex-start;
+      }
 
-  &[data-align~="middle"] {
-    align-items: center;
-  }
+      &[data-align~="#{$device}:middle"] {
+        align-items: center;
+      }
 
-  &[data-align~="bottom"] {
-    align-items: flex-end;
+      &[data-align~="#{$device}:bottom"] {
+        align-items: flex-end;
+      }
+    }
   }
 
   &__item {
-    &[data-align~="start"] {
-      align-items: flex-start;
-    }
+    @each $device, $breakpoint in $breakpoints {
+      @media screen and (min-width: $breakpoint) {
+        &[data-align~="#{$device}:start"] {
+          align-items: flex-start;
+        }
 
-    &[data-align~="center"] {
-      align-items: center;
-    }
+        &[data-align~="#{$device}:center"] {
+          align-items: center;
+        }
 
-    &[data-align~="end"] {
-      align-items: flex-end;
-    }
+        &[data-align~="#{$device}:end"] {
+          align-items: flex-end;
+        }
 
-    &[data-align~="top"] {
-      justify-content: flex-start;
-      align-self: stretch;
-    }
+        &[data-align~="#{$device}:top"] {
+          justify-content: flex-start;
+        }
 
-    &[data-align~="middle"] {
-      justify-content: center;
-      align-self: stretch;
-    }
+        &[data-align~="#{$device}:middle"] {
+          justify-content: center;
+        }
 
-    &[data-align~="bottom"] {
-      justify-content: flex-end;
-      align-self: stretch;
+        &[data-align~="#{$device}:bottom"] {
+          justify-content: flex-end;
+        }
+      }
     }
   }
 }
@@ -148,10 +171,10 @@ $breakpoints: (
   Grid
 --------------------------------- */
 /*
-  <div class="olex" data-gutter="normal">
-    <div class="olex__item" data-grid="sp12 tab4 lap6">A</div>
-    <div class="olex__item" data-grid="sp6 tab4 lap3">B</div>
-    <div class="olex__item" data-grid="sp6 tab4 lap3">C</div>
+  <div class="olex" data-gutter="xxs:medium">
+    <div class="olex__item" data-cols="xxs:12 md:4 lg:6">A</div>
+    <div class="olex__item" data-cols="xxs:6 md:4 lg3">B</div>
+    <div class="olex__item" data-cols="xxs:6 md:4 lg3">C</div>
   </div>
 */
 .olex {
@@ -160,45 +183,110 @@ $breakpoints: (
     width: auto;
 
     & > #{$this}__item {
-      border: solid transparent;
+      border: 0 solid transparent;
       background-clip: padding-box;
     }
   }
 
   @each $device, $breakpoint in $breakpoints {
     @media screen and (min-width: $breakpoint) {
-      $ratio: 2.5;
-
-      @if $breakpoint >= 768 {
-        $ratio: 1.5;
-      }
-      @if $breakpoint >= 1024 {
-        $ratio: 1;
-      }
-
       @each $size, $val in $gutters {
-        &[data-gutter="#{$size}"] {
-          margin: -($val * $ratio / 2);
+        $base: $breakpoint;
+
+        @if $breakpoint < 1px {
+          $base: 320px;
+        }
+
+        // Set Gap
+        $gap: calc(($val / $base * 100) / 2) * 1vw; // Vw
+        // $gap: calc($val / 16px / 2) * 1rem; // Rem
+
+        &[data-gutter~="#{$device}:#{$size}"] {
+          margin: -($gap);
 
           & > #{$this}__item {
-            border-width: ($val * $ratio / 2);
+            border-width: $gap;
+
+            // &[data-over*="clearLeft"] {
+            //   border-left-width: $gap;
+            // }
+            // &[data-over*="clearRight"] {
+            //   border-right-width: $gap;
+            // }
           }
         }
       }
 
       &__item {
         @for $i from 1 through $column {
-          &[data-grid~="#{$device + $i}"] {
-            width: percentage($i / $column);
+          &[data-cols~="#{$device}:#{$i}"] {
+            width: percentage(math.div($i, $column));
           }
         }
 
-        &[data-grid~="#{$device}Five"] {
+        &[data-cols~="#{$device}:five"] {
           width: 20%;
         }
 
-        &[data-grid~="#{$device}Auto"] {
+        &[data-cols~="#{$device}:auto"] {
           width: auto;
+        }
+
+        @for $i from 0 through 3 {
+          &[data-order~="#{$device}:#{$i}"] {
+            order: $i;
+          }
+          &[data-grow~="#{$device}:#{$i}"] {
+            flex-grow: $i;
+          }
+        }
+      }
+    }
+  }
+}
+
+/*
+  Over
+--------------------------------- */
+/*
+  <div class="olex" data-gutter="xxs:medium">
+    <div class="olex__item" data-cols="xxs:12 md:4 lg:6">A</div>
+    <div class="olex__item" data-cols="xxs:6 md:4 lg3">B</div>
+    <div class="olex__item" data-cols="xxs:6 md:4 lg3">C</div>
+  </div>
+*/
+.olex {
+  $this: &;
+
+  &__item {
+    @each $device, $breakpoint in $breakpoints {
+      @media screen and (min-width: $breakpoint) {
+        &[data-over*="#{$device}:"] {
+          flex-grow: 1;
+        }
+
+        &[data-over~="#{$device}:left"] {
+          margin-left: calc(50% - 50vw + $scroll-bar);
+
+          #{$this}[data-gutter] & {
+            border-left-width: 0;
+          }
+        }
+        &[data-over~="#{$device}:right"] {
+          margin-right: calc(50% - 50vw + $scroll-bar);
+
+          #{$this}[data-gutter] & {
+            border-right-width: 0;
+          }
+        }
+
+        &[data-over~="#{$device}:clearLight"] {
+          margin-left: 0;
+          border-left-width: inherit;
+        }
+        &[data-over~="#{$device}:clearRight"] {
+          margin-right: 0;
+          border-right-width: inherit;
         }
       }
     }
