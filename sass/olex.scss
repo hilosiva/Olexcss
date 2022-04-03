@@ -178,6 +178,7 @@ $breakpoints: (
   </div>
 */
 .olex {
+  --gap: 0;
   $this: &;
   &[data-gutter] {
     width: auto;
@@ -202,17 +203,12 @@ $breakpoints: (
         // $gap: calc($val / 16px / 2) * 1rem; // Rem
 
         &[data-gutter~="#{$device}:#{$size}"] {
-          margin: -($gap);
+          --gap: #{$gap};
+
+          margin: calc(#{var(--gap)} * -1);
 
           & > #{$this}__item {
-            border-width: $gap;
-
-            // &[data-over*="clearLeft"] {
-            //   border-left-width: $gap;
-            // }
-            // &[data-over*="clearRight"] {
-            //   border-right-width: $gap;
-            // }
+            border-width: var(--gap);
           }
         }
       }
@@ -249,7 +245,7 @@ $breakpoints: (
   Over
 --------------------------------- */
 /*
-  <div class="olex" data-gutter="xxs:medium">
+  <div class="olex" data-gutter="xxs:medium" data-over="xxs:left">
     <div class="olex__item" data-cols="xxs:12 md:4 lg:6">A</div>
     <div class="olex__item" data-cols="xxs:6 md:4 lg3">B</div>
     <div class="olex__item" data-cols="xxs:6 md:4 lg3">C</div>
@@ -261,12 +257,9 @@ $breakpoints: (
   &__item {
     @each $device, $breakpoint in $breakpoints {
       @media screen and (min-width: $breakpoint) {
-        &[data-over*="#{$device}:"] {
-          flex-grow: 1;
-        }
-
         &[data-over~="#{$device}:left"] {
-          margin-left: calc(50% - 50vw + $scroll-bar);
+          margin-left: calc(50% - 50vw + #{$scroll-bar});
+          flex-grow: 1;
 
           #{$this}[data-gutter] & {
             border-left-width: 0;
@@ -274,19 +267,29 @@ $breakpoints: (
         }
         &[data-over~="#{$device}:right"] {
           margin-right: calc(50% - 50vw + $scroll-bar);
+          flex-grow: 1;
 
           #{$this}[data-gutter] & {
             border-right-width: 0;
           }
         }
 
-        &[data-over~="#{$device}:clearLight"] {
+        &[data-over~="#{$device}:clearLeft"] {
           margin-left: 0;
-          border-left-width: inherit;
+
+          #{$this}[data-gutter] & {
+            border-left-width: var(--gap);
+          }
         }
         &[data-over~="#{$device}:clearRight"] {
           margin-right: 0;
-          border-right-width: inherit;
+          #{$this}[data-gutter] & {
+            border-right-width: var(--gap);
+          }
+        }
+
+        &[data-over~="#{$device}:clearLeft"][data-over~="#{$device}:clearRight"] {
+          flex-grow: 0;
         }
       }
     }

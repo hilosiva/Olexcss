@@ -47,23 +47,24 @@ Olex Item に `data-grid `属性を使ってデバイスのプレフィクスと
 
 | プレフィックス | 適用画面サイズ |
 | -------------- | -------------- |
-| `xxs`          | 0px ~          |
-| `xs`           | 360px ~        |
+| `min`          | 0px ~          |
+| `xxs`          | 360px ~        |
+| `xs`           | 414px ~        |
 | `sm`           | 576px ~        |
 | `md`           | 768px ~        |
 | `lg`           | 992px ~        |
 | `xl`           | 1200px ~       |
 | `xxl`          | 1400px ~       |
 
-メディアクエリを `min-width` しか使ってないので、`xxs`というプレフィックスはスマホだけじゃなく、横幅 `0px` 以上のブラウザ全てに適用されて、同様に`md` は、横幅 `768px` 以上のブラウザ全てに適用されるような仕様になってます。
+メディアクエリを `min-width` しか使ってないので、`min`というプレフィックスはスマホだけじゃなく、横幅 `0px` 以上のブラウザ全てに適用されて、同様に`md` は、横幅 `768px` 以上のブラウザ全てに適用されるような仕様になってます。
 
 で、例えばどの画面幅でもピッタリ半分半分の 2 段組みにしたかったら、12 分割のグリッドシステムなので、1 段につき 6 グリッド（列）ずつ使えばちょうど半分になるわけです。（12 分割 ÷ 2 段 = 6 グリッド）
 
-つまり`data-grid`属性に `xxs6`と指定すると、どのデバイスでも 2 つのボックスをちょうど半分ずつにわけることができます。
+つまり`data-grid`属性に `xxs:6`と指定すると、どのデバイスでも 2 つのボックスをちょうど半分ずつにわけることができます。
 
 このように１行の合計が 12 グリッドになるように調整するように、グリッド数を指定すれば OK です。
 
-なので、3 段組みにしたければ、`xxs4` を 3 つ並べればいいですし、4 段組みにしたければ、`xxs3` を 4 つ並べれば OK です。`xxs8` と `xxs4` などの組み合わせで 12 グリッドを使っても大丈夫です。
+なので、3 段組みにしたければ、`xxs:4` を 3 つ並べればいいですし、4 段組みにしたければ、`xxs:3` を 4 つ並べれば OK です。`xxs:8` と `xxs:4` などの組み合わせで 12 グリッドを使っても大丈夫です。
 
 ![olex-grid – 4@2x](https://user-images.githubusercontent.com/46587015/111059594-272e1300-84da-11eb-9823-a0c2ea3da07a.png)
 
@@ -71,9 +72,9 @@ Olex Item に `data-grid `属性を使ってデバイスのプレフィクスと
 
 ```html
 <div class="olex">
-  <div class="olex__item" data-grid="xxs12 md4 lg6">A</div>
-  <div class="olex__item" data-grid="xxs6 md4 lg3">B</div>
-  <div class="olex__item" data-grid="xxs6 md4 lg3">C</div>
+  <div class="olex__item" data-grid="xxs:12 md:4 lg:6">A</div>
+  <div class="olex__item" data-grid="xxs:6 md:4 lg:3">B</div>
+  <div class="olex__item" data-grid="xxs:6 md:4 lg:3">C</div>
 </div>
 ```
 
@@ -85,14 +86,19 @@ Olex Item 間にスペースを設ける場合は、Olex Container に`data-gutt
 
 ブレイクポイントごとに切り替えたい場合は、カスタマイズしてください。
 
-| サイズ   | スペースサイズ                                         |
-| -------- | ------------------------------------------------------ |
-| `small`  | スマホ: 2.5vw / タブレット以上： 1.5vw / PC 以上： 1vw |
-| `normal` | スマホ: 5vw / タブレット以上： 3vw / PC 以上： 2vw     |
-| `large`  | スマホ: 7.5vw / タブレット以上： 4.5vw / PC 以上： 3vw |
+| サイズ     | スペース |
+| ---------- | -------- |
+| `xxsmall`  | 16px     |
+| `xsmall`   | 32px     |
+| `small`    | 48px     |
+| `medium`   | 64px     |
+| `large`    | 88px     |
+| `xlarge`   | 136px    |
+| `xxlarge`  | 160px    |
+| `xxxlarge` | 260px    |
 
 ```html
-<div class="olex" data-gutter="normal">
+<div class="olex" data-gutter="xxs:normal">
   <div class="olex__item" data-grid="xxs12 md4 lg6">A</div>
   <div class="olex__item" data-grid="xxs6 md4 lg3">B</div>
   <div class="olex__item" data-grid="xxs6 md4 lg3">C</div>
@@ -173,6 +179,25 @@ Olex Item の並び順を指定するには Olex Container に `data-dir`属性�
 </div>
 ```
 
+## Over the Container
+
+Olex Item を コンテナー幅から飛び越えさせるには Olex Item に `data-over`属性を使って飛び越える位置を表すキーワードを指定する。
+
+| 属性値       | 役割         |
+| ------------ | ------------ |
+| `left`       | 左に超える   |
+| `right`      | 右に超える   |
+| `clearLeft`  | 左越えの解除 |
+| `clearRight` | 右越えの解除 |
+
+```html
+<div class="olex" data-gutter="xxs:xxsmall">
+  <div class="olex__item" data-over="xxs:left">A</div>
+  <div class="olex__item">B</div>
+  <div class="olex__item" data-over="xxs:right lg:clearRight">C</div>
+</div>
+```
+
 ## ブラウザサポート
 
 - Google Chrome (latest)
@@ -180,7 +205,6 @@ Olex Item の並び順を指定するには Olex Container に `data-dir`属性�
 - Firefox (latest)
 - Safari (latest)
 - Edge (latest)
-- Internet Explorer 11+
 
 ## ライセンス
 
