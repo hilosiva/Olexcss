@@ -12,23 +12,18 @@
 // Grid Column
 $column: 12;
 
-$scroll-bar: 8px;
-
-// Design Width Size
-$sm-design-width: 375px;
-$md-design-width: 768px;
-$lg-design-width: 1280px;
+$scroll-bar: 8;
 
 // Gutter Size
 $gutters: (
-  xxsmall: 16px,
-  xsmall: 32px,
-  small: 48px,
-  medium: 64px,
-  large: 88px,
-  xlarge: 136px,
-  xxlarge: 160px,
-  xxxlarge: 260px,
+  xxsmall: 16,
+  xsmall: 32,
+  small: 48,
+  medium: 64,
+  large: 88,
+  xlarge: 136,
+  xxlarge: 160,
+  xxxlarge: 260,
 ) !default;
 
 // Breakpoints
@@ -42,6 +37,13 @@ $breakpoints: (
   xl: 1200px,
   xxl: 1400px,
 ) !default;
+
+:root {
+  @each $size, $val in $gutters {
+    --olex-space-#{$size}: #{$val};
+  }
+  --olex-scrollbar-width: #{$scroll-bar};
+}
 
 /*
   Base
@@ -199,12 +201,11 @@ $breakpoints: (
         }
 
         // Set Gap
-        $gap: calc(($val / $base * 100) / 2) * 1vw; // Vw
+        // $gap: calc(($val / $base * 100) / 2) * 1vw; // Vw
         // $gap: calc($val / 16px / 2) * 1rem; // Rem
 
         &[data-gutter~="#{$device}:#{$size}"] {
-          --gap: #{$gap};
-
+          --gap: calc(var(--olex-space-#{$size}) / 16 / 2 * 1rem);
           margin: calc(#{var(--gap)} * -1);
 
           & > #{$this}__item {
@@ -258,7 +259,7 @@ $breakpoints: (
     @each $device, $breakpoint in $breakpoints {
       @media screen and (min-width: $breakpoint) {
         &[data-over~="#{$device}:left"] {
-          margin-left: calc(50% - 50vw + #{$scroll-bar});
+          margin-left: calc(50% - 50vw + calc(var(--olex-scrollbar-width) * 1px));
           flex-grow: 1;
 
           #{$this}[data-gutter] & {
@@ -266,7 +267,7 @@ $breakpoints: (
           }
         }
         &[data-over~="#{$device}:right"] {
-          margin-right: calc(50% - 50vw + $scroll-bar);
+          margin-right: calc(50% - 50vw + calc(var(--olex-scrollbar-width) * 1px));
           flex-grow: 1;
 
           #{$this}[data-gutter] & {

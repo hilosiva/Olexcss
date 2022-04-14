@@ -41,7 +41,7 @@ Olex Container と Olex Item を用意する
 
 12 カラムを基準としたグリッドシステム。
 
-Olex Item に `data-grid `属性を使ってデバイスのプレフィクスとグリッド数を指定します。
+Olex Item に `data-cols `属性を使ってデバイスのプレフィクスとグリッド数を指定します。
 
 ブレイクポイントはカスタマイズしやすいよう、sass ファイルに変数で設定できるようにしてます。
 
@@ -60,7 +60,7 @@ Olex Item に `data-grid `属性を使ってデバイスのプレフィクスと
 
 で、例えばどの画面幅でもピッタリ半分半分の 2 段組みにしたかったら、12 分割のグリッドシステムなので、1 段につき 6 グリッド（列）ずつ使えばちょうど半分になるわけです。（12 分割 ÷ 2 段 = 6 グリッド）
 
-つまり`data-grid`属性に `xxs:6`と指定すると、どのデバイスでも 2 つのボックスをちょうど半分ずつにわけることができます。
+つまり`data-cols`属性に `xxs:6`と指定すると、どのデバイスでも 2 つのボックスをちょうど半分ずつにわけることができます。
 
 このように１行の合計が 12 グリッドになるように調整するように、グリッド数を指定すれば OK です。
 
@@ -72,9 +72,9 @@ Olex Item に `data-grid `属性を使ってデバイスのプレフィクスと
 
 ```html
 <div class="olex">
-  <div class="olex__item" data-grid="xxs:12 md:4 lg:6">A</div>
-  <div class="olex__item" data-grid="xxs:6 md:4 lg:3">B</div>
-  <div class="olex__item" data-grid="xxs:6 md:4 lg:3">C</div>
+  <div class="olex__item" data-cols="xxs:12 md:4 lg:6">A</div>
+  <div class="olex__item" data-cols="xxs:6 md:4 lg:3">B</div>
+  <div class="olex__item" data-cols="xxs:6 md:4 lg:3">C</div>
 </div>
 ```
 
@@ -99,9 +99,9 @@ Olex Item 間にスペースを設ける場合は、Olex Container に`data-gutt
 
 ```html
 <div class="olex" data-gutter="xxs:normal">
-  <div class="olex__item" data-grid="xxs12 md4 lg6">A</div>
-  <div class="olex__item" data-grid="xxs6 md4 lg3">B</div>
-  <div class="olex__item" data-grid="xxs6 md4 lg3">C</div>
+  <div class="olex__item" data-cols="xxs12 md4 lg6">A</div>
+  <div class="olex__item" data-cols="xxs6 md4 lg3">B</div>
+  <div class="olex__item" data-cols="xxs6 md4 lg3">C</div>
 </div>
 ```
 
